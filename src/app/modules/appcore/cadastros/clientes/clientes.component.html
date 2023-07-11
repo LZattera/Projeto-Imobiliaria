@@ -1,0 +1,99 @@
+<div class="container-fluid flex-grow-1 container-p-y">
+
+    <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/appcore/dashboard']"><i class="feather icon-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">{{nome_tela}}</li>
+            <li class="breadcrumb-item active col-10">{{nome_etapa}}</li>
+
+        </ol>
+    </div>
+
+    <div class="card mb-4">
+        <h6 class="card-header">
+            <div class="row m-0">
+                <div class="col-6">
+                    Listagem de Dados
+                </div>
+            </div>
+        </h6>
+
+        <div class="row px-4 mt-3">
+
+            <div class="col-4">
+                <div class="form-group col-md-4">
+                    <select class="custom-select" (change)="limitChanged.next($event.target.value)">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="50" selected>50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="-1">Todos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control pl-3" placeholder="Pesquisar ..." (input)="searchChanged.next($event.target.value)" />
+            </div>
+
+        </div>
+
+        <div class="card-body" *ngIf="loading">
+            <div class="row text-center">
+                <div class="col" style="color: #AAA;">
+                    <div class="spinner-border mb-3" role="status"></div>
+                    <p style="font-size: 1.2rem;">Carregando, aguarde...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body " *ngIf="!(loading || itens.length == 0)">
+
+
+            <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                <thead>
+                    <tr>
+                        <th>Código Representante</th>
+                        <th>Razão Social</th>
+                        <th>Endereco</th>
+                        <th>Contato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ################ LISTAGEM DOS REGISTROS ##################### -->
+                    <tr *ngFor="let item of itens | paginate: { itemsPerPage: limit, currentPage: page, totalItems: total }">
+                        <td>{{item.codigoRepresentante}}</td>
+                        <td>{{item.razaoSocial}}</td>
+                        <td><!-- ENDERECO -->
+                            <p>Cidade: {{item.nomeCidade}}</p>
+                            <p>Endereco: {{item.endereco}}</p>
+                            <p>Bairro: {{item.bairro}}</p>
+                            <p>Num.: {{item.numero}}</p>
+                            <p>Cep: {{item.cep}}</p>
+                        </td>
+                        <td><!-- CONTATO -->
+                            <p>Contato: {{item.nomeContato}}</p>
+                            <p>Email: {{item.email}}</p>
+                            <p>Tel: {{item.telefone}}</p>
+                            <p>Cel: {{item.celular}}</p>
+                        </td>
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="card-footer">
+                <div class="float-left">
+                    Exibindo <b>{{itens.length}}</b> de <b>{{total}}</b> resultados
+                </div>
+                <div class="float-right">
+                    <pagination-controls class="my-pagination" (pageChange)="onPageChange($event)" nextLabel=""
+                        previousLabel=""></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

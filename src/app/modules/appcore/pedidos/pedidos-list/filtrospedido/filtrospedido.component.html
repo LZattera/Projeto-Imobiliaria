@@ -1,0 +1,76 @@
+<div id="accordion" class=" m-3">
+    <div class="card Filtro">
+        <button class="btn btn-sm" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <b> Filtros</b>
+        </button>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+                <div class="form-row" [formGroup]="frmForm">
+
+                    <div class="form-group col-md-2 col-sm-3">
+                        <label class="form-label">Status </label>
+                        <select class="custom-select" class="form-control" formControlName="idStatus">
+                            <option selected [ngValue]="null">*** Todos Status ***</option>
+                            <option *ngFor="let item of lstStatus" [value]="item.id">{{item.nome}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-4" *ngIf="idRepresentante==null ">
+                        <label class="form-label">Representante</label>
+                        <ng-select placeholder="Selecione um representante..." formControlName="idRepresentante" [searchable]="true"
+                            [clearable]="true" [items]="lstRepresentantes" bindLabel="nome" bindValue="id"
+                            notFoundText="Nenhum representante encontrado!">
+                            <ng-template ng-option-tmp let-item="item">
+                                <div title="{{item.nome}}">{{item.nome}}</div>
+                            </ng-template>
+                        </ng-select>
+                    </div>
+                    <div class="form-group col-md-4  col-sm-4" *ngIf="idCliente==null">
+                        <label class="form-label">Cliente</label>
+                        <ng-select placeholder="Selecione um cliente..." formControlName="idCliente" [searchable]="true" [clearable]="true"
+                            [items]="lstClientes" bindLabel="razaoSocial" bindValue="id" notFoundText="Nenhum cliente encontrado!">
+                            <ng-template ng-option-tmp let-item="item">
+                                <div title="{{item.razaoSocial}}">{{item.razaoSocial}}</div>
+                            </ng-template>
+                        </ng-select>
+                    </div>
+
+                    <!-- <div class="form-group col-md-1  col-sm-3">
+                        <label class="form-label">Tipo Data</label>
+                        <select class="form-control select-custom" formControlName="tipoData">
+                            <option value="CAD">Cadastro</option>
+                            <option value="FIN">Finalizado</option>
+                            <option value="FAT">Baixado/Faturado</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2 col-sm-3">
+                        <label class="form-label">Inicial</label>
+                        <app-flatpickr-component id="dataIni" [FormGroup]="frmForm" formControlName="dataInicial"></app-flatpickr-component>
+
+
+                    </div>
+                    <div class="form-group col-md-2  col-sm-3">
+                        <label class="form-label">Final</label>
+                        <app-flatpickr-component id="dataFin" [FormGroup]="frmForm" formControlName="dataFinal"></app-flatpickr-component>
+
+
+                    </div> -->
+
+                    <!-- <div class="form-group col-md-3">
+                        <label class="form-label">Status</label>
+                        <select class="custom-select select-multiple" size="6" multiple formControlName="status">
+                            <option selected value="null">*** Todos Status ***</option>
+                            <option *ngFor="let item of lstStatus" [value]="item.codigo">{{item.codigo}}-{{item.nome}}</option>
+                        </select>
+                    </div> -->
+
+                    <div class="form-group col-md-2 col-sm-3">
+                        <button type="submit" class="btn btn-primary mt-3" (click)="filtrar()"><i class="bi bi-filter"></i> Filtrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

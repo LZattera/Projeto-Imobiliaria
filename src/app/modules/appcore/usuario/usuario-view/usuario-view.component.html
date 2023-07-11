@@ -1,0 +1,161 @@
+<div class="container-fluid flex-grow-1 container-p-y">
+
+    <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/appcore/dashboard']"><i class="feather icon-home"></i></a></li>
+            <li class="breadcrumb-item" [routerLink]="['/appcore/usuario']">{{nome_tela}}</li>
+            <li class="breadcrumb-item active">{{nome_etapa}}</li>
+        </ol>
+    </div>
+
+    <ul class="nav nav-tabs ml-3" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" href="#dados" role="tab" data-toggle="tab"><i class="material-icons mr-2"
+                    style="font-size: 1.2rem; vertical-align: top;">&#xe97a;</i> Dados</a>
+        </li>
+        <li class="nav-item" *ngIf="id > 0">
+            <a class="nav-link" href="#tabelas" role="tab" data-toggle="tab"><i class="material-icons mr-2"
+                    style="font-size: 1.2rem; vertical-align: top;">&#xe97a;</i> Tabelas Preços</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active show" id="dados">
+            <div class="card mb-4">
+                <h6 class="card-header">
+                    <div class="row m-0">
+                        <div class="col-9" *ngIf="id==0">Novo Registro</div>
+                        <div class="col-9" *ngIf="id>0">Editar Registro</div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <a type="button" *ngIf="id>0" [routerLink]="['/appcore/usuario/view']" class="btn btn-xs
+                        btn-outline-primary">Novo</a>
+                        </div>
+                    </div>
+                </h6>
+                <div class="card-body" *ngIf="loading">
+                    <div class="row text-center">
+                        <div class="col" style="padding: 20px 0;">
+                            <div class="spinner-border mb-3" style="color: #AAA" role="status"></div>
+                            <p class="titulo-load-carregando">Carregando... Aguarde</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" [formGroup]="frmForm" [hidden]="loading">
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-3 col-sm-12">
+                            <label class="form-label">Nome</label><label class="not-optional">*</label>
+                            <input type="text" class="form-control" id="nome" formControlName="nome" [ngClass]="{ 'is-invalid' :
+                        submitted &&
+                        f.nome.errors}" #nome autofocus="true">
+                            <span class="invalid-feedback" *ngIf="f.nome.errors?.required">Este
+                                campo é
+                                obrigatório</span>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="form-group col-md-3 col-sm-12">
+                            <label class="form-label">Apelido</label><label class="not-optional">*</label>
+                            <input type="text" class="form-control" id="apelido" placeholder="username" formControlName="apelido"
+                                (blur)="verifica($event)" [ngClass]="{ 'is-invalid' : (submitted && f.apelido.errors)}">
+                            <span class="invalid-feedback" *ngIf="f.apelido.errors?.required">Este campo é obrigatório</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-12">
+                            <label class="form-label">Senha</label><label *ngIf="id == 0" class="not-optional">*</label>
+                            <input type="password" class="form-control" id="senha" formControlName="senha" (change)="submittedPassword = false"
+                                [ngClass]="{ 'is-invalid' : submittedPassword}">
+                            <span class="invalid-feedback" *ngIf="submittedPassword">Este campo é obrigatório</span>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-12">
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email" formControlName="email" [ngClass]="{ 'is-invalid' :
+                        submitted && f.email.errors}">
+                            <span class="invalid-feedback" *ngIf="f.email.errors?.required">Este
+                                campo é
+                                obrigatório</span>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <!-- <div class="form-group col-md-3 col-sm-12">
+                    <label class="form-label">Representante</label>
+                    <select class="form-control" formControlName="idRepresentante" [ngClass]="{ 'is-invalid' :
+                        submitted && f.idRepresentante.errors}" autofocus="true">
+                        <option *ngFor="let item of lstRepresentante" [ngValue]="item.id">{{item.nome}}</option>
+                    </select>
+                </div> -->
+
+                        <div class="form-group col-md-3 col-sm-12">
+                            <label class="form-label">Perfil de Acesso</label>
+                            <ng-select placeholder="Selecione um perfil de acesso..." formControlName="acesso" [clearable]="false" [searchable]="true"
+                                notFoundText="Nenhum encontrado!" (change)="LimpaForm()">
+                                <ng-option [value]="1">Administrador</ng-option>
+                                <ng-option [value]="2">Televendas</ng-option>
+                                <ng-option [value]="3">Representante</ng-option>
+                                <ng-option [value]="4">Cliente</ng-option>
+                            </ng-select>
+                            <span class="invalid-feedback" *ngIf="f.acesso.errors?.required">Este campo é obrigatório</span>
+                        </div>
+                        <!-- *ngIf="frmForm.value.acesso == 1 || frmForm.value.acesso == 2 || frmForm.value.acesso == 3" -->
+                        <div class="form-group col-md-3 col-sm-12">
+                            <label class="form-label">Representante</label>
+                            <ng-select placeholder="Selecione cliente..." formControlName="idRepresentante" [searchable]="true" [clearable]="true"
+                                [items]="lstRepresentante" bindLabel="nome" bindValue="id" notFoundText="Nenhum representante encontrado!">
+                            </ng-select>
+                        </div>
+                        <div class="form-group col-md-3 col-sm-12" *ngIf="frmForm.value.acesso == 4">
+                            <label class="form-label">Cliente</label>
+                            <ng-select placeholder="Selecione cliente..." formControlName="idCliente" [searchable]="true" [clearable]="true"
+                                [items]="lstClientes" bindLabel="nomeFantasia" bindValue="id" notFoundText="Nenhum cliente encontrado!">
+                            </ng-select>
+                        </div>
+
+
+                        <div class="form-group col-md-2 col-sm-12">
+                            <label class="form-label">Ativo</label>
+                            <ng-select formControlName="ativo" [clearable]="false" [searchable]="true" notFoundText="Nenhum encontrado!">
+                                <ng-option [value]="true">Sim</ng-option>
+                                <ng-option [value]="false">Não</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 mt-4">
+                            <button type="submit" class="btn btn-primary" (click)="save($event)">Salvar</button>
+                            <a tabindex="0" [routerLink]="['/appcore/usuario']" class="btn btn-outline-secondary">Voltar</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="tabelas">
+
+            <div class="card mb-4">
+                <h6 class="card-header">
+                    <div class="row m-0">
+                        <div class="col-9">Tabelas de Preços Liberadas</div>
+                    </div>
+                </h6>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3" *ngFor="let tab of lstTabelas">
+                            <label>
+                                <input type="checkbox" [checked]="tab.idUsuarioTabela != null" (change)="SaveTabela(tab)">
+                                {{tab.nomeTabela}}
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>

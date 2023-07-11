@@ -1,0 +1,148 @@
+<div class="container-fluid flex-grow-1 container-p-y">
+
+    <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/appcore/dashboard']"><i class="feather icon-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">{{nome_tela}}</li>
+            <li class="breadcrumb-item active col-10">{{nome_etapa}}</li>
+
+        </ol>
+    </div>
+
+    <div class="card mb-4">
+        <h6 class="card-header">
+            <div class="row m-0">
+                <div class="col-6">
+                    Listagem de Dados
+                </div>
+            </div>
+        </h6>
+
+        <div class="row px-4 mt-3">
+
+            <div class="col-4">
+                <div class="form-group col-md-4">
+                    <select class="custom-select" (change)="limitChanged.next($event.target.value)">
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="99999999">Todos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control pl-3" placeholder="Pesquisar ..." (input)="searchChanged.next($event.target.value)" />
+            </div>
+            <div class="col-4 text-right">
+                <a type="button" (click)="new()" class="btn btn-xs btn-outline-primary mt-3">Novo</a>
+            </div>
+        </div>
+
+        <div class="card-body" *ngIf="loading">
+            <div class="row text-center">
+                <div class="col" style="color: #AAA;">
+                    <div class="spinner-border mb-3" role="status"></div>
+                    <p style="font-size: 1.2rem;">Carregando, aguarde...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body " *ngIf="!(loading || itens.length == 0)">
+
+
+            <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Ativo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ################ NOVO REGISTRO - INSERIR ##################### -->
+                    <tr [formGroup]="frmForm" *ngIf="frmForm.value.id == 0" class="editing">
+
+                        <td>
+                            <input type="text" class="form-control" formControlName="nome" [ngClass]="{ 'is-invalid' : submitted && f.nome.errors}"
+                                #nome>
+                            <span class="invalid-feedback" *ngIf="f.nome.errors?.required">Este campo é
+                                obrigatório</span>
+                        </td>
+
+                        <td>
+                            <label class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" formControlName="ativo">
+                                <span class="custom-control-label"></span>
+                            </label>
+                        </td>
+
+                        <td class="d-flex justify-content-end pt-3">
+                            <button type="button" (click)="save($event)" class="btn btn-xs btn-success">Salvar</button>
+                            <button type="button" (click)="canceledit()" class="btn btn-xs btn-info">Cancelar</button>
+
+                        </td>
+                    </tr>
+                    <!-- ################ LISTAGEM DOS REGISTROS ##################### -->
+                    <tr [ngClass]="{ 'editing shadow' : frmForm.value.id == item.id}" [formGroup]="frmForm"
+                        *ngFor="let item of itens | paginate: { itemsPerPage: limit, currentPage: page, totalItems: total }">
+                        <!-- <th scope="row">{{item.id}}</th> -->
+                        <td *ngIf="frmForm.value.id != item.id">{{item.nome}}</td>
+                        <td *ngIf="frmForm.value.id != item.id">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" [checked]="item.ativo == 1"
+                                    (change)="alterarAtivo($event, item.id)">
+                                <span class="custom-control-label"></span>
+                            </label>
+                        </td>
+                        <td *ngIf="frmForm.value.id != item.id" class="d-flex justify-content-end">
+                            <button type="button" (click)="edit(item)" class="btn btn-xs btn-outline-info"><i
+                                    class="material-icons icon-button">&#xe3c9;</i>
+                                Editar</button>
+                            <button type="button" (click)="delete(item.id)" class="btn btn-xs btn-danger">
+                                Excluir</button>
+                        </td>
+                        <!-- ############################################################### -->
+                        <!-- ################ EDIÇÃO REGISTRO - EDITAR ##################### -->
+                        <td *ngIf="frmForm.value.id == item.id">
+                            <input type="text" class="form-control" id="nome" formControlName="nome"
+                                [ngClass]="{ 'is-invalid' : submitted && f.nome.errors}">
+                            <span class="invalid-feedback" *ngIf="f.nome.errors?.required">Este campo é
+                                obrigatório</span>
+                        </td>
+
+
+                        <td *ngIf="frmForm.value.id == item.id">
+                            <label class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" formControlName="ativo">
+                                <span class="custom-control-label"></span>
+                            </label>
+                        </td>
+
+                        <td *ngIf="frmForm.value.id == item.id" class="d-flex justify-content-end pt-3">
+                            <button type="button" (click)="save()" class="btn btn-xs btn-success"><i class="material-icons icon-button">&#xe161;</i>
+                                Salvar</button>
+                            <button type="button" (click)="canceledit()" class="btn btn-xs btn-info"><i
+                                    class="material-icons icon-button">&#xe5c9;</i>
+                                Cancelar</button>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+            <div class="card-footer">
+                <div class="float-left">
+                    Exibindo <b>{{itens.length}}</b> de <b>{{total}}</b> resultados
+                </div>
+                <div class="float-right">
+                    <pagination-controls class="my-pagination" (pageChange)="onPageChange($event)" nextLabel=""
+                        previousLabel=""></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-tabela-produto (evFechar)="fecharModal()" [idTabela]="idTabela" *ngIf="mostraModal === 'TabelaProduto'"></app-tabela-produto>

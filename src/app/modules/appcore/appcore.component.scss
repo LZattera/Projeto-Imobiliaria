@@ -1,0 +1,59 @@
+@import "../../../ng-select.default.theme.css";
+
+.icone-nao-presente{
+    font-size: 1.5rem; 
+    vertical-align: middle; 
+    //margin-left: 4rem;
+}
+
+.monospace-helvetica{
+    font-family: Arial, Helvetica, sans-serif, monospace;
+}
+
+i{
+    color: #5f6368;
+}
+
+.selected{
+    a{  
+        margin-right: 1em;
+        margin-left: 1em;
+        padding-left: .9em;
+        background-color: #276B9E1a;
+        border-radius: .75em;
+    }
+
+    div{
+        color: black;
+    }
+    i{
+        color: black;
+    }
+}
+
+a:hover{  
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: .9em;
+    background-color: #0e26381a;
+    border-radius: .75em;
+}
+
+// li:hover{
+//     div{
+//         color: black;
+//     }
+//     i{
+//         color: black;
+//     }
+// }
+
+.sidenav-icon{
+    font-size: 1.2rem !important;
+}
+
+.sidenav-item{
+    margin: .125rem 0;
+}
+
+

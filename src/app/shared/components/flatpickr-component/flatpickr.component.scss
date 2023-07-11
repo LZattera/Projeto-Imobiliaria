@@ -1,0 +1,77 @@
+$data-clear-width: 2.75rem;
+
+#data-input{
+    //@extend .child-center-vertical;
+    width: calc(100% - $data-clear-width);
+    height: 2.3rem;
+    min-height: 2.1875rem;
+    border-radius: 1em 0em 0em 1em !important;
+    @extend .form-heir;
+
+    text-align: center
+}
+
+#data-clear{
+    @extend .child-center-vertical;
+    height: 100%;
+    height: 2.3rem;
+    min-height: 2.1875rem;
+    border-radius: 0 1em 1em 0 !important;
+    @extend .btn-heir;
+    width: $data-clear-width;
+    top: -.4px;
+}
+
+
+.flatpickr{
+    display: flex;
+    height: 2.3rem;
+}
+
+.child-center-vertical{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-heir{
+    background: #8897AA;
+    background-color: rgb(136, 151, 170);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-image: none;
+    background-size: auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.07), 0px 4px 5px 0px rgba(0, 0, 0, 0.05), 0px 1px 10px 0px rgba(0, 0, 0, 0.03);
+    color: #fff;
+}
+
+.form-heir{
+    border: 0px solid rgba(24, 28, 33, 0.1);
+    border-width: 1px;
+    border-style: solid;
+
+    display: block;
+    height: 2.3rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.96rem;
+    font-weight: 400;
+    color: #212529;
+    background-color: transparent;
+    background-clip: padding-box;
+    padding-left: 0.75em !important;
+
+    &:focus{
+        border-color: #0E2638;
+        box-shadow: 0 0px 0 0 #0E2638 inset;
+        color: #212529;
+        outline: none;
+    }
+    
+    &.is-invalid{
+        border-color: #FF6961; 
+    }
+}

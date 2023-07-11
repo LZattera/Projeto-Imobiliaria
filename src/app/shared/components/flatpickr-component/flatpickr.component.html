@@ -1,0 +1,14 @@
+<div class="flatpickr" id="{{id}}" [formGroup]="FormGroup">
+    <input id="data-input" [formControlName]="formControlName" [ngClass]="{ 'is-invalid' : submitted && FormGroup.controls[formControlName].errors }" data-input type="text" [placeholder]="placeholder">
+    <a id="data-clear" data-clear class="waves-effect">
+        <div id="icon-container">
+            <div id="icon">
+                <i class="feather icon-x"></i>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div *ngIf="HasError" style="color: red; font-size: smaller;">
+    <i class="feather icon-alert-circle" *ngIf="HasError"></i> Ocorreu um erro atualizando o campo no formulario
+</div>
