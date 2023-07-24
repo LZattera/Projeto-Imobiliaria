@@ -38,7 +38,7 @@ export class CadastrosService {
 
     
   listaAtivoVariavel(): Observable<any> {
-    return this.http.get(environment.apiUrl +'tipo/listAtivo');
+    return this.http.get(environment.apiUrl +'variavel/listAtivo');
   }
 
 
@@ -86,28 +86,28 @@ export class CadastrosService {
     if(filter != ""){
       params = params.append('filter', filter);
     } 
-    return this.http.get(environment.apiUrl +'Setor/list', { params: params } );
+    return this.http.get(environment.apiUrl +'setor/list', { params: params } );
   }
   
   ativarSetor(id: number): Observable<any> {
-    return this.http.put(environment.apiUrl+'Setor/ativar/'+id,{});
+    return this.http.put(environment.apiUrl+'setor/ativar/'+id,{});
   }
 
   saveSetor(dados): Observable<any> {
-    return this.http.post(environment.apiUrl +'Setor/save', dados);
+    return this.http.post(environment.apiUrl +'setor/save', dados);
   }
 
   buscarSetor(id): Observable<any> {
-    return this.http.get(environment.apiUrl +'Setor/get/'+id);
+    return this.http.get(environment.apiUrl +'setor/get/'+id);
   }
 
   deleteSetor(id): Observable<any> {
-    return this.http.delete(environment.apiUrl +'Setor/delete/'+id);
+    return this.http.delete(environment.apiUrl +'setor/delete/'+id);
   }
 
     
   listaAtivoSetor(): Observable<any> {
-    return this.http.get(environment.apiUrl +'Setor/listAtivo');
+    return this.http.get(environment.apiUrl +'setor/listAtivo');
   }
 
 

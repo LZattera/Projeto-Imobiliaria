@@ -18,6 +18,8 @@ export class FiltrosmonitoramentoComponent implements OnInit {
   frmForm: FormGroup;
   lstRepresentantes: any[] = [];
   lstVariaveis: any = [];
+  lstSetor: any = [];
+  lstClientes: any = [];
   idCliente:number = null;
   idEmpresa:number = null;
 
@@ -41,13 +43,17 @@ export class FiltrosmonitoramentoComponent implements OnInit {
 
     
      this.loadVariaveis();
+     this.loadClientes();
+     this.loadSetor();
   }
 
   createForm(): FormGroup {
     return this.fb.group({
       idClienteVariavel : [],
+      idSetor : [],
+      idCliente : [],
+      idVariavel : [],
       data : [],
-      valor:[],
     });
   }
   
@@ -55,6 +61,24 @@ export class FiltrosmonitoramentoComponent implements OnInit {
     return new Promise((resolve) => {
       this.cadastroService.listaAtivoVariavel().subscribe({
         next: (res) => { this.lstVariaveis = res; resolve();  },
+        error:(err) => { console.log(err); resolve() }
+      });
+    });
+  }
+
+  loadClientes():Promise<void>{
+    return new Promise((resolve) => {
+      this.cadastroService.listarClientesAll(this.idEmpresa).subscribe({
+        next: (res) => { this.lstClientes = res; resolve();  },
+        error:(err) => { console.log(err); resolve() }
+      });
+    });
+  }
+
+  loadSetor():Promise<void>{
+    return new Promise((resolve) => {
+      this.cadastroService.listaAtivoSetor().subscribe({
+        next: (res) => { this.lstSetor = res; resolve();  },
         error:(err) => { console.log(err); resolve() }
       });
     });

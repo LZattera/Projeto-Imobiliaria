@@ -17,7 +17,7 @@
             </div>
         </h6>
 
-        <app-filtrosmonitoramento (evFiltrar)="filtrar($event)"></app-filtrosmonitoramento>
+        <!-- <app-filtrosmonitoramento (evFiltrar)="filtrar($event)"></app-filtrosmonitoramento> -->
 
         <div class="row px-4 mt-3">
 
@@ -56,7 +56,9 @@
                 <thead>
                     <tr>
                         <!-- <th>Código Representante</th> -->
+                        <th>Cliente</th>
                         <th>Variavel</th>
+                        <th>Setor</th>
                         <th>Data</th>
                         <th>Valor</th>
                     </tr>
@@ -65,9 +67,11 @@
                     <!-- ################ LISTAGEM DOS REGISTROS ##################### -->
                     <tr *ngFor="let item of itens | paginate: { itemsPerPage: limit, currentPage: page, totalItems: total }">
                         <!-- <td>{{item.codigoRepresentante}}</td> -->
+                        <td>{{item.nomeCliente}}</td>
                         <td>{{item.nomeVariavel}}</td>
-                        <td>{{item.data}}</td>
-                        <td>{{item.valor}}</td>
+                        <td>{{item.nomeSetor}}</td>
+                        <td>{{item.dataString}}</td>
+                        <td>{{item.valor | number}} </td>
                     </tr>
 
                 </tbody>

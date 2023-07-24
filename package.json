@@ -29,6 +29,7 @@
     "@ultima-ui/tree-select": "^0.0.67",
     "angular-datatables": "^14.0.0",
     "bootswatch": "^5.2.2",
+    "chart.js": "^4.3.0",
     "datatables.net": "^1.13.1",
     "datatables.net-bs4": "^1.13.1",
     "datatables.net-buttons": "^2.3.2",

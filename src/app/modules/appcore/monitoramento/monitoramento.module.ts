@@ -27,7 +27,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-    NgxMaskModule.forRoot(),
     RouterModule,
     NgSelectModule,
     FlatpickrComponent,
@@ -41,8 +40,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
       }
     }),
     DataTablesModule,
-    NgxCurrencyModule,
     SharedModule,
+    NgxCurrencyModule,
+    NgxMaskModule.forRoot(),
   ],
 })
 export class MonitoramentoModule { }

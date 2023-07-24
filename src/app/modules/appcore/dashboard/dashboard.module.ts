@@ -9,7 +9,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgPopupsModule } from 'ng-popups';
 import { PrincipalComponent } from './principal/principal.component';
-
 @NgModule({
   declarations: [
     PrincipalComponent
@@ -23,7 +22,8 @@ import { PrincipalComponent } from './principal/principal.component';
     NgSelectModule,
     NgxPaginationModule,
     NgPopupsModule.forRoot(),
-    FlatpickrComponent
+    FlatpickrComponent,
+    
   ]
 })
 export class DashboardModule { }

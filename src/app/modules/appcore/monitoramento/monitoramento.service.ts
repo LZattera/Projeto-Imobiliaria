@@ -15,4 +15,7 @@ export class MonitoramentoService {
   listar(filtros : any): Observable<any> {
     return this.http.post(environment.apiUrl + 'monitoramento/list', filtros);
   }
+  dashboard(idCliente : any): Observable<any> {
+    return this.http.get(environment.apiUrl + 'monitoramento/dashboard/'+idCliente);
+  }
 }

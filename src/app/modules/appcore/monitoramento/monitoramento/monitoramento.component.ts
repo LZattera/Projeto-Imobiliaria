@@ -61,14 +61,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     
     createForm(): FormGroup {
       return this.fb.group({
-        idStatus : [2],
-        idEmpresa : [this.idEmpresa],
         count : [this.limit],
         page : [this.page],
-        pesquisa : [this.search],
-        tipoData : ["CAD"],
-        dataInicial : [],
-        dataFinal : [],
+        // pesquisa : [this.search],
+        data : [],
+        idClienteVariavel : [],
+        idVariavel : [],
+        idSetor : [],
+        idCliente : [],
       });
     }
   
