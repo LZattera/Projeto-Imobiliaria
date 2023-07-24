@@ -1,0 +1,63 @@
+<div id="accordion" class=" m-3">
+    <div class="card Filtro">
+        <button class="btn btn-sm" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <b> Filtros</b>
+        </button>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+                <div class="form-row" [formGroup]="frmForm">
+
+
+                    <div class="form-group col-md-4 col-sm-4">
+                        <label class="form-label">Variavel</label>
+                        <ng-select placeholder="Selecione um representante..." formControlName="idClienteVariavel" [searchable]="true"
+                            [clearable]="true" [items]="lstVariaveis" bindLabel="nome" bindValue="id"
+                            notFoundText="Nenhum representante encontrado!">
+                            <ng-template ng-option-tmp let-item="item">
+                                <div title="{{item.nome}}">{{item.nome}}</div>
+                            </ng-template>
+                        </ng-select>
+                    </div>
+
+                    <div class="form-group col-md-4  col-sm-4">
+                        <label class="form-label">Data</label>
+                        <app-flatpickr-component id="data" [FormGroup]="frmForm" formControlName="data"></app-flatpickr-component>
+                    </div>
+
+                 <div class="form-group col-md-2  col-sm-3">
+                        <label class="form-label">Valor</label>
+                        <input type="number" class="form-control" id="valor" formControlName="valor" >
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- <div class="form-group col-md-2 col-sm-3">
+                        <label class="form-label">Inicial</label>
+                        <app-flatpickr-component id="dataIni" [FormGroup]="frmForm" formControlName="dataInicial"></app-flatpickr-component>
+
+
+                    </div>
+                    <div class="form-group col-md-2  col-sm-3">
+                        <label class="form-label">Final</label>
+                        <app-flatpickr-component id="dataFin" [FormGroup]="frmForm" formControlName="dataFinal"></app-flatpickr-component>
+
+
+                    </div> -->
+
+                    <!-- <div class="form-group col-md-3">
+                        <label class="form-label">Status</label>
+                        <select class="custom-select select-multiple" size="6" multiple formControlName="status">
+                            <option selected value="null">*** Todos Status ***</option>
+                            <option *ngFor="let item of lstStatus" [value]="item.codigo">{{item.codigo}}-{{item.nome}}</option>
+                        </select>
+                    </div> -->
+
+                    <div class="form-group col-md-2 col-sm-3">
+                        <button type="submit" class="btn btn-primary mt-3" (click)="filtrar()"><i class="bi bi-filter"></i> Filtrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,21 +5,19 @@
             <li class="breadcrumb-item"><a [routerLink]="['/appcore/dashboard']"><i class="feather icon-home"></i></a>
             </li>
             <li class="breadcrumb-item">{{nome_tela}}</li>
-            <li class="breadcrumb-item active col-10">{{nome_etapa}}</li>
         </ol>
     </div>
 
     <div class="card mb-4">
         <h6 class="card-header">
             <div class="row m-0">
-                <div class="col-11">
-                    Listagem de Dados
-                </div>
-                <div class="col-1">
-                    <button class="btn btn-outline-primary btn-sm" [routerLink]="['view',0]">Novo</button>
+                <div class="col-6">
+                    Monitoramento
                 </div>
             </div>
         </h6>
+
+        <app-filtrosmonitoramento (evFiltrar)="filtrar($event)"></app-filtrosmonitoramento>
 
         <div class="row px-4 mt-3">
 
@@ -58,35 +56,18 @@
                 <thead>
                     <tr>
                         <!-- <th>Código Representante</th> -->
-                        <th>Razão Social</th>
-                        <th>Endereco</th>
-                        <th>Contato</th>
-                        <th>Ações</th>
+                        <th>Variavel</th>
+                        <th>Data</th>
+                        <th>Valor</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- ################ LISTAGEM DOS REGISTROS ##################### -->
                     <tr *ngFor="let item of itens | paginate: { itemsPerPage: limit, currentPage: page, totalItems: total }">
                         <!-- <td>{{item.codigoRepresentante}}</td> -->
-                        <td>{{item.razaoSocial}}</td>
-                        <td><!-- ENDERECO -->
-                            <p>Cidade: {{item.nomeCidade}}</p>
-                            <p>Endereco: {{item.endereco}}</p>
-                            <p>Bairro: {{item.bairro}}</p>
-                            <p>Num.: {{item.numero}}</p>
-                            <p>Cep: {{item.cep}}</p>
-                        </td>
-                        <td><!-- CONTATO -->
-                            <p>Contato: {{item.nomeContato}}</p>
-                            <p>Email: {{item.email}}</p>
-                            <p>Tel: {{item.telefone}}</p>
-                            <p>Cel: {{item.celular}}</p>
-                        </td>
-
-                        <td>
-                            <button  [routerLink]="['view',item.id]" class="btn btn-outline-primary btn-sm">Editar</button>
-                        </td>
-
+                        <td>{{item.nomeVariavel}}</td>
+                        <td>{{item.data}}</td>
+                        <td>{{item.valor}}</td>
                     </tr>
 
                 </tbody>

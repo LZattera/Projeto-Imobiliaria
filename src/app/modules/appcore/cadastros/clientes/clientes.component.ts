@@ -22,6 +22,9 @@ nome_tela = "Clientes";
   submitted: boolean;
   idEmpresa:number;
 
+  mostraPagina: string ='';
+  idCliente: number;
+
 
   limitChanged: Subject<number> = new Subject<number>();
   searchChanged: Subject<string> = new Subject<string>();
@@ -71,5 +74,9 @@ nome_tela = "Clientes";
     this.load();
   }
 
+  Editar(id){
+    this.idCliente = id;
+    return this.mostraPagina = "editar";
+  }
   
 }

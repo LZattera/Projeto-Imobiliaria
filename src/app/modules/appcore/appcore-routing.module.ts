@@ -28,6 +28,10 @@ const routes: Routes = [ {
     path: 'pedidos',
     loadChildren: () => import('./pedidos/pedidos.module').then(m => m.PedidosModule) 
   },
+  {
+    path: 'monitoramento',
+    loadChildren: () => import('./monitoramento/monitoramento.module').then(m => m.MonitoramentoModule) 
+  },
 
 ]
 }];

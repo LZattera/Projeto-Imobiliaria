@@ -24,6 +24,7 @@ import { IntegracaoerpComponent } from './integracaoerp/integracaoerp.component'
 import { VariavelComponent } from './variavel/variavel.component';
 import { SetorComponent } from './setor/setor.component';
 import { TipoComponent } from './tipo/tipo.component';
+import { ClientesVwComponent } from './clientes/clientes-vw/clientes-vw.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { TipoComponent } from './tipo/tipo.component';
     VariavelComponent,
     SetorComponent,
     TipoComponent,
+    ClientesVwComponent,
     
   ],
   imports: [

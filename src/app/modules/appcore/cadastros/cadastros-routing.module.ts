@@ -9,6 +9,7 @@ import { IntegracaoerpComponent } from './integracaoerp/integracaoerp.component'
 import { VariavelComponent } from './variavel/variavel.component';
 import { TipoComponent } from './tipo/tipo.component';
 import { SetorComponent } from './setor/setor.component';
+import { ClientesVwComponent } from './clientes/clientes-vw/clientes-vw.component';
 
 const routes: Routes = [
   
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'clientes',
     component: ClientesComponent
+  },
+  {
+    path: 'clientes/view/:idCliente',
+    component: ClientesVwComponent,
   },
   {
     path: 'tabela',

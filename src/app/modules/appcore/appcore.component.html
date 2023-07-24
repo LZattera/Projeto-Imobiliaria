@@ -49,13 +49,7 @@
                             <div>Lista de Pedidos</div>
                         </a>
                     </li>
-                    <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                                                '/appcore/cadastros/clientes'}">
-                        <a [routerLink]="['/appcore/cadastros/clientes']" class="sidenav-link subitem">
-                            <i class="sidenav-icon feather icon-list"></i>
-                            <div>Lista de Clientes</div>
-                        </a>
-                    </li>
+
                     <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
                                                 '/appcore/cadastros/produtos'}">
                         <a [routerLink]="['/appcore/cadastros/produtos']" class="sidenav-link subitem">
@@ -64,7 +58,7 @@
                         </a>
                     </li>
  -->
-
+                    
 
 
 
@@ -77,17 +71,31 @@
                         </a>
                         <ul class="sidenav-menu">
                             <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                                        '/appcore/empresa'}">
-                                <a [routerLink]="['/appcore/empresa']" class="sidenav-link">
-                                    <i class="material-icons sidenav-icon mr-2">&#xf02e;</i>
-                                    <div>Empresas</div>
-                                </a>
-                            </li>
+                            '/appcore/empresa'}">
+                            <a [routerLink]="['/appcore/empresa']" class="sidenav-link">
+                                <i class="material-icons sidenav-icon mr-2">&#xf02e;</i>
+                                <div>Empresas</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
+                                    '/appcore/monitoramento'}">
+                            <a [routerLink]="['/appcore/monitoramento']" class="sidenav-link">
+                                <i class="material-icons sidenav-icon mr-2">&#xf02e;</i>
+                                <div>Monitoramento</div>
+                            </a>
+                        </li>
                             <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
                                         '/appcore/usuario'}">
                                 <a [routerLink]="['/appcore/usuario']" class="sidenav-link">
                                     <i class="material-icons sidenav-icon mr-2">&#xf02e;</i>
                                     <div>Usuários</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
+                            '/appcore/cadastros/clientes'}">
+                                <a [routerLink]="['/appcore/cadastros/clientes']" class="sidenav-link subitem">
+                                    <i class="sidenav-icon feather icon-list"></i>
+                                    <div>Clientes</div>
                                 </a>
                             </li>
                             <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==

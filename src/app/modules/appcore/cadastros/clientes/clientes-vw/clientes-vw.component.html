@@ -1,0 +1,171 @@
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/appcore/dashboard']"><i class="feather icon-home"></i></a>
+            </li>
+            <li class="breadcrumb-item" [routerLink]="['/appcore/cadastros/clientes']">{{nome_tela}}</li>
+            <li class="breadcrumb-item active">{{nome_etapa}}</li>
+        </ol>
+    </div>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active show" id="configuracoes">
+            <div class="card mb-4">
+                <h6 class="card-header">
+                    <div class="row m-0">
+                        <div class="col-6">
+                            Editar
+                        </div>
+                    </div>
+                </h6>
+
+                <div class="card-body" *ngIf="loading">
+                    <div class="row text-center">
+                        <div class="col" style="padding: 20px 0; color: #AAA;">
+                            <div class="spinner-border mb-3" role="status"></div>
+                            <p style="font-size: 1.2rem;">Carregando...
+                                Aguarde</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body" [formGroup]="frmForm" [hidden]="loading">
+                    <div class="form-row">
+                        <div class="col-md-12 row">
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Código</label>
+                                <input type="text" class="form-control" id="codigo" formControlName="codigo"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.codigo.errors}" #codigo autofocus="true">
+                                <span class="invalid-feedback" *ngIf="f.codigo.errors?.required">Este
+                                    campo é
+                                    obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Cidade</label>
+                                <input type="text" class="form-control" id="nomeCidade" formControlName="nomeCidade"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.nomeCidade.errors}">
+                                <span class="invalid-feedback" *ngIf="f.nomeCidade.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Razão Social</label>
+                                <input type="text" class="form-control" id="razaoSocial" formControlName="razaoSocial"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.razaoSocial.errors}">
+                                <span class="invalid-feedback" *ngIf="f.razaoSocial.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Nome Fantasia</label>
+                                <input type="text" class="form-control" id="nomeFantasia" formControlName="nomeFantasia"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.nomeFantasia.errors}">
+                                <span class="invalid-feedback" *ngIf="f.nomeFantasia.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" formControlName="email"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.email.errors}">
+                                <span class="invalid-feedback" *ngIf="f.email.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="telefone" formControlName="telefone"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.telefone.errors}">
+                                <span class="invalid-feedback" *ngIf="f.telefone.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Celular</label>
+                                <input type="text" class="form-control" id="celular" formControlName="celular"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.celular.errors}">
+                                <span class="invalid-feedback" *ngIf="f.celular.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Nome Contato</label>
+                                <input type="text" class="form-control" id="nomeContato" formControlName="nomeContato"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.nomeContato.errors}">
+                                <span class="invalid-feedback" *ngIf="f.nomeContato.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Endereço</label>
+                                <input type="text" class="form-control" id="endereco" formControlName="endereco"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.endereco.errors}">
+                                <span class="invalid-feedback" *ngIf="f.endereco.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Bairro</label>
+                                <input type="text" class="form-control" id="bairro" formControlName="bairro"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.bairro.errors}">
+                                <span class="invalid-feedback" *ngIf="f.bairro.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Número</label>
+                                <input type="number" class="form-control" id="numero" formControlName="numero"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.numero.errors}">
+                                <span class="invalid-feedback" *ngIf="f.numero.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">CEP</label>
+                                <input type="text" class="form-control" id="cep" formControlName="cep"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.cep.errors}">
+                                <span class="invalid-feedback" *ngIf="f.cep.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label">Estado</label>
+                                <input type="text" class="form-control" id="uf" formControlName="uf"
+                                    [ngClass]="{ 'is-invalid' : submitted && f.uf.errors}">
+                                <span class="invalid-feedback" *ngIf="f.uf.errors?.required">Este
+                                    campo é obrigatório</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <div class="form-group col-md-12 col-sm-12 mt-4">
+                                <button type="submit" class="btn btn-primary" (click)="save($event)">Salvar</button>
+                                <a tabindex="0" [routerLink]="['/appcore/cadastros/clientes']" class="btn
+                                btn-outline-secondary">Voltar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

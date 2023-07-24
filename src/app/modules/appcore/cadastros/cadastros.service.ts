@@ -109,27 +109,6 @@ export class CadastrosService {
   listaAtivoSetor(): Observable<any> {
     return this.http.get(environment.apiUrl +'Setor/listAtivo');
   }
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   // //CADASTROS DE ATIVIDADES
@@ -187,6 +166,10 @@ export class CadastrosService {
     return this.http.get(environment.apiUrl +'representantes/listarRepresentantes', { params: params } );
   }
   
+  buscarClientes(id): Observable <any>{
+    return this.http.get(environment.apiUrl + 'clientes/get/'+id);
+  }
+
   listarClientes(idEmpresa, page,limit,filter): Observable<any> {
     let params = new HttpParams();
     params = params.append('idEmpresa', idEmpresa);
@@ -210,6 +193,10 @@ export class CadastrosService {
     params = params.append('idEmpresa', idEmpresa);
     params = params.append('idUsuario', idUsuario);
     return this.http.get(environment.apiUrl +'clientes/listClientesRepresentante', { params: params } );
+  }
+
+  saveCliente(dados): Observable<any> {
+    return this.http.post(environment.apiUrl +'clientes/save', dados);
   }
 
   listarTabela(idEmpresa, page,limit,filter): Observable<any> {

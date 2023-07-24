@@ -100,12 +100,12 @@
                             <span class="invalid-feedback" *ngIf="f.acesso.errors?.required">Este campo é obrigatório</span>
                         </div>
                         <!-- *ngIf="frmForm.value.acesso == 1 || frmForm.value.acesso == 2 || frmForm.value.acesso == 3" -->
-                        <div class="form-group col-md-3 col-sm-12">
+                        <!-- <div class="form-group col-md-3 col-sm-12">
                             <label class="form-label">Representante</label>
                             <ng-select placeholder="Selecione cliente..." formControlName="idRepresentante" [searchable]="true" [clearable]="true"
                                 [items]="lstRepresentante" bindLabel="nome" bindValue="id" notFoundText="Nenhum representante encontrado!">
                             </ng-select>
-                        </div>
+                        </div> -->
                         <div class="form-group col-md-3 col-sm-12" *ngIf="frmForm.value.acesso == 4">
                             <label class="form-label">Cliente</label>
                             <ng-select placeholder="Selecione cliente..." formControlName="idCliente" [searchable]="true" [clearable]="true"

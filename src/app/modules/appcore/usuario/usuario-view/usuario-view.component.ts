@@ -119,7 +119,8 @@ export class UsuarioViewComponent implements OnInit {
       senha : [''],
       email : [''],
       acesso: [''],
-      idRepresentante: [],
+      // idRepresentante: [],
+
       idCliente: [],
       idEmpresa: [this.idEmpresa],
       ativo: [true],
