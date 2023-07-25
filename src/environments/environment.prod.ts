@@ -2,6 +2,6 @@ import { version } from './version';
 
 export const environment = {
   production: true,
-  apiUrl: 'https://api.usafbrazil.com.br/',
+  apiUrl: 'https://apieuroconnect.apicoopertecsolucoes.com.br/',
   version: version.number,
 };
