@@ -25,6 +25,7 @@ import { VariavelComponent } from './variavel/variavel.component';
 import { SetorComponent } from './setor/setor.component';
 import { TipoComponent } from './tipo/tipo.component';
 import { ClientesVwComponent } from './clientes/clientes-vw/clientes-vw.component';
+import { AbaVariaveisComponent } from './clientes/clientes-vw/aba-variaveis/aba-variaveis.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ClientesVwComponent } from './clientes/clientes-vw/clientes-vw.componen
     SetorComponent,
     TipoComponent,
     ClientesVwComponent,
+    AbaVariaveisComponent,
     
   ],
   imports: [

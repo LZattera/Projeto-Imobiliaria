@@ -97,6 +97,5 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       this.page = $event;
       this.load();
     }
-  
-    
+
   }

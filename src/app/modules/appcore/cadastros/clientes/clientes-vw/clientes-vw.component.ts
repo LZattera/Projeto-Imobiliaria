@@ -51,7 +51,7 @@ export class ClientesVwComponent implements OnInit {
     this.id = +this.route.snapshot.paramMap.get('idCliente');
     this.idEmpresa = +this.appService.getEmpresa();
 
-    console.log(this.idEmpresa)
+    console.log("IDCLIENTE",this.id)
     this.frmForm = this.createForm();
 
     if(this.id > 0){

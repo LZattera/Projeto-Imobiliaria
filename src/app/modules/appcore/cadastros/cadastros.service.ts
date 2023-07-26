@@ -167,7 +167,7 @@ export class CadastrosService {
   }
   
   buscarClientes(id): Observable <any>{
-    return this.http.get(environment.apiUrl + 'clientes/get/'+id);
+    return this.http.get(environment.apiUrl + 'Clientes/get/'+id);
   }
 
   listarClientes(idEmpresa, page,limit,filter): Observable<any> {
@@ -179,24 +179,24 @@ export class CadastrosService {
     if(filter != ""){
       params = params.append('filter', filter);
     } 
-    return this.http.get(environment.apiUrl +'clientes/list', { params: params } );
+    return this.http.get(environment.apiUrl +'Clientes/list', { params: params } );
   }
 
   listarClientesAll(idEmpresa): Observable<any> {
     let params = new HttpParams();
     params = params.append('idEmpresa', idEmpresa);
-    return this.http.get(environment.apiUrl +'clientes/listAll', { params: params } );
+    return this.http.get(environment.apiUrl +'Clientes/listAll', { params: params } );
   }
 
   listClientesRepresentante(idEmpresa, idUsuario): Observable<any> {
     let params = new HttpParams();
     params = params.append('idEmpresa', idEmpresa);
     params = params.append('idUsuario', idUsuario);
-    return this.http.get(environment.apiUrl +'clientes/listClientesRepresentante', { params: params } );
+    return this.http.get(environment.apiUrl +'Clientes/listClientesRepresentante', { params: params } );
   }
 
   saveCliente(dados): Observable<any> {
-    return this.http.post(environment.apiUrl +'clientes/save', dados);
+    return this.http.post(environment.apiUrl +'Clientes/save', dados);
   }
 
   listarTabela(idEmpresa, page,limit,filter): Observable<any> {
@@ -281,5 +281,17 @@ export class CadastrosService {
 
   listAtivoStatus(): Observable<any> {
     return this.http.get(environment.apiUrl + 'status/listAtivo');
+  }
+
+  //    CIENTE VARIAVEL
+  saveClienteVariavel(dados): Observable<any> {
+    return this.http.post(environment.apiUrl +'ClienteVariavel/save', dados);
+  }
+ 
+  listClienteVariavel(idCliente): Observable<any> {
+    return this.http.get(environment.apiUrl +'ClienteVariavel/list/'+idCliente);
+  }
+  deleteClienteVariavel(id): Observable<any> {
+    return this.http.delete(environment.apiUrl +'ClienteVariavel/delete/'+id);
   }
 }

@@ -8,8 +8,19 @@
         </ol>
     </div>
 
+    <ul class="nav nav-tabs ml-3" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" href="#dados" role="tab" data-toggle="tab"><i class="material-icons mr-2"
+                    style="font-size: 1.2rem; vertical-align: top;">&#xe97a;</i> Dados Cliente</a>
+        </li>
+        <li class="nav-item" *ngIf="id > 0">
+            <a class="nav-link" href="#variaveis" role="tab" data-toggle="tab"><i class="material-icons mr-2"
+                    style="font-size: 1.2rem; vertical-align: top;">&#xebe7;</i> Variáveis</a>
+        </li>
+    </ul>
+
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade active show" id="configuracoes">
+        <div role="tabpanel" class="tab-pane fade active show" id="dados">
             <div class="card mb-4">
                 <h6 class="card-header">
                     <div class="row m-0">
@@ -164,7 +175,9 @@
                 </div>
             </div>
         </div>
-
+        <div role="tabpanel" class="tab-pane fade " id="variaveis" *ngIf="id > 0">
+            <app-aba-variaveis [idCliente]="id"></app-aba-variaveis>
+        </div>
 
     </div>
 
