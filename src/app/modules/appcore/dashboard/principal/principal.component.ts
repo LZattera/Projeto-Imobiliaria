@@ -2,6 +2,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { MonitoramentoService } from '../../monitoramento/monitoramento.service';
+import { CadastrosService } from '../../cadastros/cadastros.service';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -34,28 +35,40 @@ export class PrincipalComponent implements OnInit {
   variaveis: string[] = [];
   valores: number[] = [];
   lstSeriesChart :  any[] = []
+  lstSetores :  any[] = []
 
   constructor(
-    private monitoramentoService: MonitoramentoService
+    private monitoramentoService: MonitoramentoService,
+    private cadastrosService: CadastrosService,
   ) { }
   
   ngOnInit(): void {
-    this.loadMonitoramento();
+    this.loadSetores();
+    this.loadMonitoramento(null);
   }
   
   ngAfterViewInit(): void {
     // this.lineChartMethod();
   }
+  loadSetores(){
   
-  loadMonitoramento(){
-    console.log("Monitoramento")
-    this.monitoramentoService.dashboard(1).subscribe((res)=>{
+     this.cadastrosService.listaAtivoSetor().subscribe((res)=>{
+      console.log('SETORES => ',res)
+      this.lstSetores = res;
+    }, err =>{
+      this.error = err;
+     });
+  }
+
+  loadMonitoramento(setor){
+    console.log("SETOR" , setor)
+    this.datas = [];
+    this.lstSeriesChart = [];
+    this.monitoramentoService.dashboard(1, setor).subscribe((res)=>{
       this.datas = res.points;
 
+
       res.series.forEach(ser => {
-        // var mSerie : ChartItem;
-        // mSerie.label = ser.nomeSerie;
-        // mSerie.data = ser.Valores;
           var teste : any;
           teste = {
             label: ser.nomeSerie,
@@ -78,11 +91,6 @@ export class PrincipalComponent implements OnInit {
           }
         this.lstSeriesChart.push(teste);
       });
-
-      // this.valores = res.valor;
-      // this.variaveis = res.nomeVariavel;
-      // console.log(this.variaveis)
-      // res.nomeVariavel.forEach(row => {
         
          this.lineChartMethod();
       // });
@@ -94,7 +102,11 @@ export class PrincipalComponent implements OnInit {
   
   lineChartMethod() {
     console.log("Grafico")
-
+   
+    if(this.lineChart!=null){
+      this.lineChart.destroy();
+    }
+    
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {

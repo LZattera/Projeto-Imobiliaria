@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,10 @@ export class MonitoramentoService {
   listar(filtros : any): Observable<any> {
     return this.http.post(environment.apiUrl + 'monitoramento/list', filtros);
   }
-  dashboard(idCliente : any): Observable<any> {
-    return this.http.get(environment.apiUrl + 'monitoramento/dashboard/'+idCliente);
+  dashboard(idCliente : any, idSetor: any): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('idCliente', idCliente);
+    params = params.append('idSetor', idSetor);
+    return this.http.get(environment.apiUrl + 'monitoramento/dashboard', { params :params});
   }
 }
