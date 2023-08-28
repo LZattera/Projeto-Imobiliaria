@@ -1,27 +1,30 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { NgPopupsService } from 'ng-popups';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CadastrosService } from '../../../cadastros.service';
 @Component({
-  selector: 'app-aba-variaveis',
-  templateUrl: './aba-variaveis.component.html',
-  styleUrls: ['./aba-variaveis.component.scss']
+  selector: 'modal-sistema-variaveis',
+  templateUrl: './modal-sistema-variaveis.component.html',
+  styleUrls: ['./modal-sistema-variaveis.component.scss']
 })
-export class AbaVariaveisComponent implements OnInit {
+export class ModalSistemaVariaveisComponent {
   
-  @Input("idCliente") idCliente: number = -1;
+  @Input("idClienteSistema") idClienteSistema: number;
+
+  @Output('evFechar')evFechar: EventEmitter<any> = new EventEmitter<any>();
 
   id: number;
-  erro: string;
+  error: string;
   editing: boolean = false;
   submitted: boolean = false;
   loading: boolean = false; 
   frmForm: FormGroup;
-  lstClienteVariaveis: any = [];
   lstVariaveis: any = [];
   lstSetores: any = [];
-  lstClienteVariavel: any = [];
+  lstClienteSistemaVariavel: any = [];
+  itens: any[] = [];
+  MostraModalSisVar : boolean = false;
   
 
   constructor(
@@ -35,18 +38,28 @@ export class AbaVariaveisComponent implements OnInit {
     this.frmForm = this.createForm();
      this.loadVariaveis();
     this.loadSetores();
-    this.loadClienteVarivel();
+    this.loadClienteSistemaVarivel();
+
+    this.frmForm = this.createForm();
+    // if(this.idClienteSistema != 0){
+    //   this.loadClienteSistemaVarivel();
+    // }
   }
 
-  loadClienteVarivel() {
-    this.loading = true;
-    this.cadastroService.listClienteVariavel(this.idCliente).subscribe(res => {
-       this.lstClienteVariavel= res;
-       this.loading = false;
-     }, err => {
-       this.erro = err;
-     });
+  loadClienteSistemaVarivel():Promise<void>{
+ 
+    return new Promise((resolve) => {
+      this.cadastroService.listClienteSistemaVariavel(this.idClienteSistema).subscribe({
+        next: (res) => { 
+            this.itens = res;
+             console.log(res);
+            this.loading = false; resolve();  
+        },
+        error:(err) => { console.log(err); resolve() }
+      });
+    });
   }
+
   loadVariaveis() {
     this.loading = true;
     this.cadastroService.listaAtivoVariavel().subscribe(res => {
@@ -54,7 +67,7 @@ export class AbaVariaveisComponent implements OnInit {
        this.lstVariaveis= res;
        this.loading = false;
      }, err => {
-       this.erro = err;
+       this.error = err;
      });
   }
   loadSetores() {
@@ -64,16 +77,15 @@ export class AbaVariaveisComponent implements OnInit {
        this.lstSetores= res;
        this.loading = false;
      }, err => {
-       this.erro = err;
+       this.error = err;
      });
   }
 
 
   createForm(): FormGroup {
-  
     return this.fb.group({
-      id:[this.id],
-      idCliente:[this.idCliente],
+      id:[, Validators.required],
+      idClienteSistema : [this.idClienteSistema, Validators.required],
       idVariavel:['', Validators.required],
       idSetor:['', Validators.required],
       descricao:[null],
@@ -85,7 +97,7 @@ export class AbaVariaveisComponent implements OnInit {
  }
 
  new(){
-    var item = {'idVarivel': '', 'idSetor':'', 'idCliente': this.idCliente, 'descricao':'', 'id':0};
+    var item = {'idVarivel': '', 'idSetor':'', 'idClienteSistema': this.idClienteSistema, 'descricao':'', 'id':0};
     this.frmForm.patchValue(item);
  }
 
@@ -93,9 +105,9 @@ export class AbaVariaveisComponent implements OnInit {
   this.ngPopups.confirm('Você deseja excluir o registro?')
   .subscribe(res => {
   if (res) {
-      this.cadastroService.deleteClienteVariavel(id).subscribe(res =>{
+      this.cadastroService.deleteClienteSistemaVariavel(id).subscribe(res =>{
         this.toastr.success('','Deletado com sucesso!');
-        this.loadClienteVarivel();
+        this.loadClienteSistemaVarivel();
       }, err => {
         this.toastr.error(err,'ERRO AO DELETAR');
       });
@@ -121,19 +133,19 @@ canceledit(){
      this.loading = true;
      if(this.frmForm.controls["id"].value != 0){
    console.log(this.frmForm.value);
-       this.cadastroService.saveClienteVariavel(this.frmForm.value).subscribe(res =>{
+       this.cadastroService.saveClienteSistemaVariavel(this.frmForm.value).subscribe(res =>{
           this.toastr.success(null,'Gravado com sucesso!');
           this.frmForm.reset();
-          this.loadClienteVarivel();
+          this.loadClienteSistemaVarivel();
        }, err => {
          this.toastr.error(err,'ERRO AO GRAVAR');
          this.loading = false;
        });
      }else{
-       this.cadastroService.saveClienteVariavel(this.frmForm.value).subscribe(res =>{
+       this.cadastroService.saveClienteSistemaVariavel(this.frmForm.value).subscribe(res =>{
          this.toastr.success(null,'Gravado com sucesso!');
          this.frmForm.reset();
-         this.loadClienteVarivel();
+         this.loadClienteSistemaVarivel();
          this.loading = false;
        }, err => {
          this.toastr.error(err,'ERRO AO GRAVAR');
@@ -143,5 +155,15 @@ canceledit(){
    }
    $event.preventDefault();
  }
+
+abreModalSisVar(idClienteSistema : number){
+    //Essa funçao recebe o id do cliente sistema para inserção ou edição
+    this.idClienteSistema = idClienteSistema;
+    this.MostraModalSisVar = true;
+  }
+
+fechaModalSisVar(){
+    this.evFechar.emit();
+  }
 
 }

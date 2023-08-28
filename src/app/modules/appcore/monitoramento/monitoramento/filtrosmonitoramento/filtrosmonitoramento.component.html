@@ -11,9 +11,8 @@
 
                     <div class="form-group col-md-4 col-sm-4">
                         <label class="form-label">Cliente</label>
-                        <ng-select placeholder="Selecione um cliente..." formControlName="idCliente" [searchable]="true"
-                            [clearable]="true" [items]="lstClientes" bindLabel="razaoSocial" bindValue="id"
-                            notFoundText="Nenhum cliente encontrado!">
+                        <ng-select placeholder="Selecione um cliente..." formControlName="idCliente" [searchable]="true" [clearable]="true"
+                            [items]="lstClientes" bindLabel="razaoSocial" bindValue="id" notFoundText="Nenhum cliente encontrado!">
                             <ng-template ng-option-tmp let-item="item">
                                 <div title="{{item.razaoSocial}}">{{item.razaoSocial}}</div>
                             </ng-template>
@@ -22,9 +21,8 @@
 
                     <div class="form-group col-md-4 col-sm-4">
                         <label class="form-label">Setor</label>
-                        <ng-select placeholder="Selecione um setor..." formControlName="idSetor" [searchable]="true"
-                            [clearable]="true" [items]="lstSetor" bindLabel="nome" bindValue="id"
-                            notFoundText="Nenhum setor encontrado!">
+                        <ng-select placeholder="Selecione um setor..." formControlName="idSetor" [searchable]="true" [clearable]="true"
+                            [items]="lstSetor" bindLabel="nome" bindValue="id" notFoundText="Nenhum setor encontrado!">
                             <ng-template ng-option-tmp let-item="item">
                                 <div title="{{item.nome}}">{{item.nome}}</div>
                             </ng-template>
@@ -33,9 +31,8 @@
 
                     <div class="form-group col-md-4 col-sm-4">
                         <label class="form-label">Variavel</label>
-                        <ng-select placeholder="Selecione um representante..." formControlName="idVariavel" [searchable]="true"
-                            [clearable]="true" [items]="lstVariaveis" bindLabel="nome" bindValue="id"
-                            notFoundText="Nenhuma variável encontrado!">
+                        <ng-select placeholder="Selecione um representante..." formControlName="idVariavel" [searchable]="true" [clearable]="true"
+                            [items]="lstVariaveis" bindLabel="nome" bindValue="id" notFoundText="Nenhuma variável encontrado!">
                             <ng-template ng-option-tmp let-item="item">
                                 <div title="{{item.nome}}">{{item.nome}}</div>
                             </ng-template>
@@ -47,7 +44,7 @@
                         <app-flatpickr-component id="data" [FormGroup]="frmForm" formControlName="data"></app-flatpickr-component>
                     </div>
 
-              
+
                     <!-- <div class="form-group col-md-2 col-sm-3">
                         <label class="form-label">Inicial</label>
                         <app-flatpickr-component id="dataIni" [FormGroup]="frmForm" formControlName="dataInicial"></app-flatpickr-component>
@@ -69,10 +66,14 @@
                         </select>
                     </div> -->
 
-                    <div class="form-group col-md-2 col-sm-3">
+                    <div class="form-group col-md-4 col-sm-3">
                         <button type="submit" class="btn btn-primary mt-3" (click)="filtrar()"><i class="bi bi-filter"></i> Filtrar</button>
+                        <button type="button" class="btn btn-primary mt-3" (click)="ExportMonitoramento()"><i class="bi bi-filetype-csv"></i>
+                            Exportar Monitoramento</button>
+                        <!-- <button type="submit" class="btn btn-primary mt-3" (click)="ExportMonitoramento()" *ngIf="exportMonitoramento.length > 0"><i
+                                class="bi bi-filter"></i>
+                            Exportar Monitoramento</button> -->
                     </div>
-
                 </div>
             </div>
         </div>

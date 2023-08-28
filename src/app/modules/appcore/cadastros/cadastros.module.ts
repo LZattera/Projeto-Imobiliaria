@@ -25,7 +25,9 @@ import { VariavelComponent } from './variavel/variavel.component';
 import { SetorComponent } from './setor/setor.component';
 import { TipoComponent } from './tipo/tipo.component';
 import { ClientesVwComponent } from './clientes/clientes-vw/clientes-vw.component';
-import { AbaVariaveisComponent } from './clientes/clientes-vw/aba-variaveis/aba-variaveis.component';
+import { ModalSistemaVariaveisComponent } from './clientes/clientes-vw/modal-sistema-variaveis/modal-sistema-variaveis.component';
+import { AbaSistemaComponent } from './clientes/clientes-vw/aba-sistema/aba-sistema.component';
+import { FlatpickrComponent } from 'src/app/shared/components/flatpickr-component/flatpickr.component';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { AbaVariaveisComponent } from './clientes/clientes-vw/aba-variaveis/aba-
     SetorComponent,
     TipoComponent,
     ClientesVwComponent,
-    AbaVariaveisComponent,
+    ModalSistemaVariaveisComponent,
+    AbaSistemaComponent,
     
   ],
   imports: [
@@ -55,6 +58,7 @@ import { AbaVariaveisComponent } from './clientes/clientes-vw/aba-variaveis/aba-
     NgxMaskModule.forRoot(),
     RouterModule,
     NgSelectModule,
+    FlatpickrComponent,
     
     NgPopupsModule.forRoot({
       okButtonText: 'Sim',

@@ -21,4 +21,7 @@ export class MonitoramentoService {
     params = params.append('idSetor', idSetor);
     return this.http.get(environment.apiUrl + 'monitoramento/dashboard', { params :params});
   }
+  ExportMonitoramento(monitoramentoExport : any): Observable<any> { 
+    return this.http.post(environment.apiUrl + 'monitoramento/exportarMonitoramento', monitoramentoExport);
+  }
 }

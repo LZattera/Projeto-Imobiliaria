@@ -14,8 +14,8 @@
                     style="font-size: 1.2rem; vertical-align: top;">&#xe97a;</i> Dados Cliente</a>
         </li>
         <li class="nav-item" *ngIf="id > 0">
-            <a class="nav-link" href="#variaveis" role="tab" data-toggle="tab"><i class="material-icons mr-2"
-                    style="font-size: 1.2rem; vertical-align: top;">&#xebe7;</i> Variáveis</a>
+            <a class="nav-link" href="#sistemas" role="tab" data-toggle="tab"><i class="material-icons mr-2"
+                    style="font-size: 1.2rem; vertical-align: top;">&#xe97a;</i> Sistemas</a>
         </li>
     </ul>
 
@@ -175,8 +175,8 @@
                 </div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane fade " id="variaveis" *ngIf="id > 0">
-            <app-aba-variaveis [idCliente]="id"></app-aba-variaveis>
+        <div role="tabpanel" class="tab-pane fade " id="sistemas" *ngIf="id > 0">
+            <app-aba-sistema [idCliente]="id"></app-aba-sistema>
         </div>
 
     </div>

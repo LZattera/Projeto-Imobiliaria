@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CadastrosService {
+  listaAtivoSistemas() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(
     private http: HttpClient
@@ -284,14 +287,29 @@ export class CadastrosService {
   }
 
   //    CIENTE VARIAVEL
-  saveClienteVariavel(dados): Observable<any> {
-    return this.http.post(environment.apiUrl +'ClienteVariavel/save', dados);
+  saveClienteSistemaVariavel(dados): Observable<any> {
+    return this.http.post(environment.apiUrl +'ClienteSistemaVariavel/save', dados);
   }
  
-  listClienteVariavel(idCliente): Observable<any> {
-    return this.http.get(environment.apiUrl +'ClienteVariavel/list/'+idCliente);
+  listClienteSistemaVariavel(idClienteSistema): Observable<any> {
+    return this.http.get(environment.apiUrl +'ClienteSistemaVariavel/list/'+idClienteSistema);
   }
-  deleteClienteVariavel(id): Observable<any> {
-    return this.http.delete(environment.apiUrl +'ClienteVariavel/delete/'+id);
+  deleteClienteSistemaVariavel(id): Observable<any> {
+    return this.http.delete(environment.apiUrl +'ClienteSistemaVariavel/delete/'+id);
+  }
+  
+  //    CIENTE SISTEMA
+  saveClienteSistema(dados): Observable<any> {
+    return this.http.post(environment.apiUrl +'ClienteSistema/save', dados);
+  }
+ 
+  listClienteSistema(idCliente): Observable<any> {
+    return this.http.get(environment.apiUrl +'ClienteSistema/list/'+idCliente);
+  }
+  listaAtivoSistema(): Observable<any> {
+    return this.http.get(environment.apiUrl +'ClienteSistema/listAtivo');
+  }
+  deleteClienteSistema(id): Observable<any> {
+    return this.http.delete(environment.apiUrl +'ClienteSistema/delete/'+id);
   }
 }
