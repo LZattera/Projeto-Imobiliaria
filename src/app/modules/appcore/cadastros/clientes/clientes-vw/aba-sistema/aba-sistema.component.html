@@ -67,6 +67,7 @@
                             <button type="button" (click)="canceledit()" class="btn btn-xs btn-info">Cancelar</button>
                         </td>
                     </tr>
+
                     <!-- - ################ LISTAGEM DOS REGISTROS #####################  -->
                     <tr [ngClass]="{ 'editing shadow' : frmForm.value.id == item.id}" [formGroup]="frmForm" *ngFor="let item of itens">
                         <!-- <th scope="row">{{item.id}}</th> -->
@@ -85,7 +86,8 @@
                                 Editar</button>
                             <button type="button" (click)="abreModalSisVar(item.id)" class="btn btn-xs btn-outline-secondary"><i
                                     class="material-icons icon-button">&#xe3c9;</i> Variáveis</button>
-                            <button type="button" (click)="delete(item.id)" class="btn btn-xs btn-danger">
+                            <button type="button" (click)="delete(item.id)" class="btn btn-xs btn-danger"><i
+                                    class="material-icons icon-button">&#xe872;</i>
                                 Excluir</button>
                         </td>
 
