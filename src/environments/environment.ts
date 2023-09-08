@@ -11,7 +11,7 @@ export const environment = {
   //apiUrl: 'https://localhost:7221/',
 
 
-  apiUrl: 'http://192.168.1.50:8260/',
+  apiUrl: 'http://192.168.1.6:8260/',
   version: version.number,
 };
 

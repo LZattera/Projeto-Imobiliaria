@@ -42,6 +42,13 @@
                             <div>Painel Controle</div>
                         </a>
                     </li>
+
+                    <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url =='/appcore/dashboardgraficos'}">
+                        <a [routerLink]="['/appcore/dashboardgraficos']" class="sidenav-link subitem">
+                        <i class="bi bi-graph-down sidenav-icon mr-2"></i>
+                        <div>Dashboard</div>
+                        </a>
+                    </li>
                     <!--<li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
                                         '/appcore/pedidos'}">
                         <a [routerLink]="['/appcore/pedidos']" class="sidenav-link">

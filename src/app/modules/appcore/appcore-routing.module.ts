@@ -32,6 +32,10 @@ const routes: Routes = [ {
     path: 'monitoramento',
     loadChildren: () => import('./monitoramento/monitoramento.module').then(m => m.MonitoramentoModule) 
   },
+  {
+    path: 'dashboardgraficos',
+    loadChildren: () => import('./dashboardgraficos/dashboardgraficos.module').then(m => m.DashboardgraficosModule) 
+  },
 
 ]
 }];
