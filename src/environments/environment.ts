@@ -7,10 +7,8 @@ export const environment = {
   production: false,
   //===========  API LOCAL / REPORT HOMOLOGACAO
   //apiUrl: 'http://45.231.132.153:8220/',
-  // apiUrl: 'https://localhost:44372/',
+  // apiUrl: 'https://localhost:44372/'
   //apiUrl: 'https://localhost:7221/',
-
-
   apiUrl: 'http://192.168.1.6:8260/',
   version: version.number,
 };
