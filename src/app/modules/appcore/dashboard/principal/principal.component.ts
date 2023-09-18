@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import Chart from 'chart.js/auto';
+// import Chart from 'chart.js/auto';
 import { MonitoramentoService } from '../../monitoramento/monitoramento.service';
 import { CadastrosService } from '../../cadastros/cadastros.service';
 @Component({
@@ -91,14 +91,14 @@ export class PrincipalComponent implements OnInit {
       this.lineChart.destroy();
     }
     
-    this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
-      type: 'line',
-      data: {
-        labels: this.datas,
-        datasets: this.lstSeriesChart,
-      },
-    });
-  }
+  //   this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
+  //     type: 'line',
+  //     data: {
+  //       labels: this.datas,
+  //       datasets: this.lstSeriesChart,
+  //     },
+  //   });
+   }
 }
 
 

@@ -9,12 +9,12 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgPopupsModule } from 'ng-popups';
 import { PrincipalComponent } from './principal/principal.component';
-import { MyLineChartComponent } from './my-line-chart/my-line-chart.component';
-import { NgChartsModule } from 'ng2-charts';
+// import { MyLineChartComponent } from './my-line-chart/my-line-chart.component';
+// import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
-    PrincipalComponent,
-    MyLineChartComponent
+    PrincipalComponent
+    // MyLineChartComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +26,7 @@ import { NgChartsModule } from 'ng2-charts';
     NgxPaginationModule,
     NgPopupsModule.forRoot(),
     FlatpickrComponent,
-    NgChartsModule,
+    // NgChartsModule,
     
   ]
 })

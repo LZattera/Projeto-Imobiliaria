@@ -36,8 +36,8 @@
 
                   <div class="tab-content">
                         <div class="tab-pane fade show" [ngClass]="{'active': j == 0}" *ngFor="let variavel of setor.variaveis; let j = index" id="variavel{{j}}">
-                            {{i}}-{{j}}
                             <canvas
+                                id="canva-{{i}}-{{j}}"
                                 baseChart
                                 class="chart"
                                 [data]="barChartData"

@@ -16,7 +16,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
+// import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 
 registerLocaleData(ptBR);
 
@@ -39,7 +39,7 @@ registerLocaleData(ptBR);
       mode: 'ios',
       backButtonText: 'Voltar',
     }),
-    NgChartsModule
+    // NgChartsModule
     //NgPopupsModule.forRoot()
   ],
   providers: [
@@ -53,7 +53,7 @@ registerLocaleData(ptBR);
       provide: LOCALE_ID,
       useValue: 'pt-BR'
     },
-    { provide: NgChartsConfiguration, useValue: { generateColors: false }}
+    // { provide: NgChartsConfiguration, useValue: { generateColors: false }}
   ],
   bootstrap: [AppComponent]
 })
