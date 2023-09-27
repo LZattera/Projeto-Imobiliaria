@@ -98,7 +98,10 @@ export class DashboardgraficosComponent implements OnInit {
   }
 
 //===========================================================================================================================
-  lineChartMethod() {
+listaDados: DadosGrafico[] = [];  
+lineChartMethod() {
+
+    
     let qtd : number = 0;
 
     this.setores.forEach(row=>{
@@ -106,7 +109,7 @@ export class DashboardgraficosComponent implements OnInit {
       row.variaveis.forEach(vari=>{
         console.log("Variavel=> ", vari.nomeVariavel);
         vari.valores.forEach(val => {
-          console.log(val);
+          // console.log(val);
           val.data;
           val.valor;
         });
@@ -129,6 +132,7 @@ export class DashboardgraficosComponent implements OnInit {
     }, 100);
   }
 
+
   createChart(chart: HTMLCanvasElement){
 
     if(this.lineChart != null){
@@ -150,9 +154,10 @@ export class DashboardgraficosComponent implements OnInit {
   }
 }
 
-export interface MeuObjeto {
-  propriedade1: string;
-  propriedade2: number;
+export interface DadosGrafico {
+  nomeVariavel: string;
+  valores: number[];
+  datas: string[];
 }
 
 export interface ChartItem{
