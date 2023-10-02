@@ -1,60 +1,63 @@
-<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="container-fluid flex-grow-1 container-p-y">
 
-    <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/appcore/dashboardgraficos']"><i class="feather icon-home"></i></a>
-            </li>
-            <li class="breadcrumb-item">Dashboard</li>
-        </ol>
-    </div>
-
-    <div class="card mb-4 shadow" *ngIf="!loading">
-        <div class="card-header with-elements pb-0">
-            <div class="card-header-elements p-0">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item" *ngFor="let setor of setores; let i = index">
-                        <a class="nav-link" [ngClass]="{'active': i == 0}" data-toggle="tab" href="#setor{{i}}"> 
-                            {{setor.nome}}
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/appcore/dashboardgraficos']"><i class="feather icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item">Dashboard</li>
+            </ol>
         </div>
 
-        <div class="nav-tabs-top">
-            <div class="tab-content">
-                <div class="tab-pane fade show" [ngClass]="{'active': i == 0}" *ngFor="let setor of setores; let i = index" id="setor{{i}}">
-                  <div class="card-body mb-4">
+        <div class="card mb-4 shadow" *ngIf="!loading">
+            <div class="card-header with-elements pb-0">
+                <div class="card-header-elements p-0">
                     <ul class="nav nav-tabs">
-                        <li class="nav-item"  *ngFor="let variavel of setor.variaveis; let z = index">
-                            <a class="nav-link" [ngClass]="{'active': z == 0}" data-toggle="tab" href="#variavel{{z}}"> 
-                                {{variavel.nomeVariavel}}
+                        <li class="nav-item" *ngFor="let setor of setores; let i = index">
+                            <a class="nav-link" [ngClass]="{'active': i == 0}" data-toggle="tab" href="#setor{{i}}"> 
+                                {{setor.nome}}
                             </a>
                         </li>
                     </ul>
-                  </div>
+                </div>
+            </div>
 
-                  <div class="tab-content">
-                        <div class="tab-pane fade show" [ngClass]="{'active': j == 0}" *ngFor="let variavel of setor.variaveis; let j = index" id="variavel{{j}}">
-                            <canvas
-                                id="canva-{{i}}-{{j}}"
-                                baseChart
-                                class="chart"
-                                [data]="barChartData"
-                                [options]="barChartOptions"
-                                [plugins]="barChartPlugins"
-                                [type]="barChartType"
-                                (chartHover)="chartHovered($event)"
-                                (chartClick)="chartClicked($event)"
-                                >
-                            </canvas>
+            <div class="nav-tabs-top">
+                <div class="tab-content">
+                    <div class="tab-pane fade show" *ngFor="let setor of setores; let i = index" id="setor{{i}}">
+                        <div class="card-body mb-4">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"  *ngFor="let variavel of setor.variaveis; let z = index">
+                                    <a class="nav-link" data-toggle="tab" href="#variavel-{{z}}"> 
+                                        {{variavel.nomeVariavel}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show"  *ngFor="let variavel of setor.variaveis; let j = index" id="variavel-{{j}}">
+                            INDICE GRAFICO: {{i}} : {{j}}-{{z}}
+                                <canvas
+                                    id="canva-{{i}}-{{j}}"
+                                    baseChart
+                                    class="chart"
+                                    [data]="barChartData"
+                                    [options]="barChartOptions"
+                                    [plugins]="barChartPlugins"
+                                    [type]="barChartType"
+                                    (chartHover)="chartHovered($event)"
+                                    (chartClick)="chartClicked($event)"
+                                    >
+                                </canvas>
+                                <!-- <canvas [attr.id]="'canva-' + i + '-' + j"></canvas> -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="card mb-4 shadow" *ngIf="loading">
+            <app-loading></app-loading>
+        </div>
     </div>
-    <div class="card mb-4 shadow" *ngIf="loading">
-        <app-loading></app-loading>
-    </div>
-</div>
+    
