@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 
 import { ChartConfiguration, ChartData, ChartType } from "chart.js";
 import * as Chart from "chart.js";
-// import { BaseChartDirective } from 'ng2-charts';
+// import { BaseChartDirective, Color } from 'ng2-charts';
 
 const plugin = {
   id: "custom_canvas_background_color",
@@ -33,14 +33,6 @@ export class DashboardgraficosComponent implements OnInit {
   public barChartType: ChartType = "bar";
   public barChartPlugins = [plugin];
 
-  // public barChartData: ChartData<'bar'> = {
-  //   labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
-  //   datasets: [
-  //     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-  //     { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-  //   ],
-  // };
-
   lineChart: any = null;
   loading: boolean;
 
@@ -57,7 +49,8 @@ export class DashboardgraficosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.idCliente = this.appService.getCliente();
+    this.idCliente =+ this.appService.getCliente();
+    console.log(this.idCliente, 'CLIENTE');
 
     this.Refresh();
   }
@@ -111,98 +104,6 @@ export class DashboardgraficosComponent implements OnInit {
   listaValores: any;
   listavalores: any = [];
   listaDatas: any = [];
-                                // lineChartMethod() {
-                                //   // window.onload = function () {
-                                //     let qtd: number = 0;
-                                //     //usar o for para fazer a iteralçao daos elementos grafico do html qunado ele troca de nome da variavel
-                                //     let nomeCanva: string = "";
-                                //     let i = 0;
-                                //     let j = 0;
-
-                                //     this.setores.forEach((row) => {
-                                //       console.log("SETOR=> ", row.nome);
-                                //       j = 0;
-                                //       row.variaveis.forEach((vari) => {
-                                //         console.log("VARIAVEL=> ", vari.nomeVariavel);
-                                //         this.listaMonitoramento = vari;
-                                //         //Pega todos os valores e datas de determinada variavel de um determinado setor
-                                //         vari.valores.forEach((val) => {
-                                //           this.listavalores.push(row.valor);
-                                //           this.listaDatas.push(row.data);
-                                //         });
-
-                                //         console.log("canva-" + i + "-" + j);
-                                //         nomeCanva = "canva-" + i + "-" + j;
-                                //         //For que muda qual grafico que vai receber os valores
-
-                                //         const interval = setInterval(() => {
-                                //           const element = document.getElementById(
-                                //             nomeCanva
-                                //           ) as HTMLCanvasElement;
-                                //           if (qtd < 3 && element) {
-                                //             this.createChart(element, this.listaMonitoramento);
-                                //             clearInterval(interval);
-                                //           }
-                                //           if (qtd >= 3) {
-                                //             clearInterval(interval);
-                                //           }
-
-                                //           qtd++;
-                                //         }, 100);
-                                //         j++;
-                                //       });
-                                //       i++;
-                                //     });
-                                //   // };
-                                //   //VERSÃO QUE FUNCIONA
-                                //   // this.listaMonitoramento = this.setores[0].variaveis[0];
-                                //   // this.listaValores = this.setores[0].variaveis[0].valores;
-                                //   // this.listaValores.forEach(row=>{
-
-                                //   //     this.listavalores.push(row.valor)
-                                //   //     this.listaDatas.push(row.data)
-                                //   // });
-                                //   // console.log("LISTA MONITORAMENTO", this.listaMonitoramento);
-
-                                //   //tentar pegar um primerio depois tentar dentre do do for
-
-                                //   // const interval = setInterval(() => {
-                                //   //   const element = document.getElementById("canva-0-0") as HTMLCanvasElement;
-                                //   //   if (qtd < 3 && element) {
-                                //   //     this.createChart(element, this.listaMonitoramento);
-                                //   //     clearInterval(interval);
-                                //   //   }
-                                //   //   if (qtd >= 3) {
-                                //   //     clearInterval(interval);
-                                //   //   }
-
-                                //   //   qtd++;
-                                //   // }, 100);
-                                // }
-
-                                // createChart(chart: HTMLCanvasElement, listaMonitoramentoVar) {
-                                //   console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-                                //   if (this.lineChart != null) {
-                                //     this.lineChart.destroy();
-                                //   }
-
-                                //   new Chart(chart, {
-                                //     type: "line",
-                                //     data: {
-                                //       // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],//datas dda variavel
-                                //       labels: this.listaDatas, //datas dda variavel
-                                //       datasets: [
-                                //         {
-                                //           // label: '# of Votes',//nome da variavel
-                                //           label: listaMonitoramentoVar.nomeVariavel, //nome da variavel
-                                //           // data: [12, 19, 3, 5, 2, 3],//valores da variavel
-                                //           data: this.listavalores, //valores da variavel
-                                //           borderWidth: 1,
-                                //         },
-                                //       ],
-                                //     },
-                                //   });
-                                // }
 
   //funciona mais ou menos
   lineChartMethod() {
@@ -217,6 +118,9 @@ export class DashboardgraficosComponent implements OnInit {
               label: nomeVariavel,
               data: listaValores,
               borderWidth: 1,
+              borderColor: "rgb(50, 99, 200)",
+              backgroundColor: "rgb(0, 0, 100, 0.5)",
+              
             },
           ],
         },
@@ -227,13 +131,10 @@ export class DashboardgraficosComponent implements OnInit {
   
     for (let i = 0; i < this.setores.length; i++) {
       const row = this.setores[i];
-      console.log("SETOR=> ", row.nome);
   
       for (let j = 0; j < row.variaveis.length; j++) {
         const vari = row.variaveis[j];
-        console.log("VARIAVEL=> ", vari.nomeVariavel);
-        console.log("DATAS=> ", vari.listaDatas);
-        console.log("VALORES=> ", vari.listaValores);
+
         this.listaMonitoramento = vari;
   
         let listaValores = [];
@@ -246,7 +147,6 @@ export class DashboardgraficosComponent implements OnInit {
         }
   
         const nomeCanva = "canva-" + i + "-" + j;
-        console.log("canva-" + i + "-" + j);
   
         const interval = setInterval(() => {
           const element = document.getElementById(nomeCanva) as HTMLCanvasElement;
@@ -256,11 +156,6 @@ export class DashboardgraficosComponent implements OnInit {
             clearInterval(interval);
           }
   
-          // if (qtd >= row.variaveis.length) {
-          //   clearInterval(interval);
-          // }
-  
-          // qtd++;
         }, 100);
       }
     }
@@ -271,7 +166,8 @@ export class DashboardgraficosComponent implements OnInit {
 
 export interface ChartItem {
   label: [];
-  fill: false;
+  fill: true;
+  borderColor: "rgb(50, 99, 200)",
   borderCapStyle: "butt";
   borderDash: [];
   borderDashOffset: 0.0;
