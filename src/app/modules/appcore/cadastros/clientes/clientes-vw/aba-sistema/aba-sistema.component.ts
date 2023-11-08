@@ -55,6 +55,7 @@ export class AbaSistemaComponent implements OnInit {
       tempoGarantia:[1 , Validators.required],
       dataStartUp:[ , Validators.required],
       dataExpiracao:[],
+      serial:['', Validators.required],
     });
  }
 
@@ -76,7 +77,7 @@ load():Promise<void>{
  }
 
  new(){
-    var item = {'nomeSistema': '', 'tempoGarantia':'', 'idCliente': this.idCliente, 'dataExpiracao':'', 'dataStartUp':'',  'id':0};
+    var item = {'serial':'','nomeSistema': '', 'tempoGarantia':'', 'idCliente': this.idCliente, 'dataExpiracao':'', 'dataStartUp':'',  'id':0};
     this.frmForm.patchValue(item);
  }
 
@@ -147,27 +148,4 @@ canceledit(){
 
 
 }
-//  save($event) {
-    
-//     console.log(this.frmForm.value);
-//     this.submitted = true;
-//     this.toastr.clear();
-//     if(this.frmForm.invalid){
-//       this.toastr.warning('','Verifique os campos!');      
-//     }else{
-//       this.loading = true;
 
-//         this.cadastroService.saveClienteSistema(this.frmForm.value).subscribe(res =>{
-//           this.toastr.success('','Gravado com sucesso!');
-//           this.submitted = false;
-//           this.loading = false;
-//           this.frmForm.reset();
-//           this.loadClienteSistema();
-//         }, err => {
-//           this.toastr.error(err,'ERRO AO GRAVAR');
-//           this.loading = false;
-//         });
-//       }
-//   }
-
-// }

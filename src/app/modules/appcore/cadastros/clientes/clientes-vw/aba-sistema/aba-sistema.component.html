@@ -13,6 +13,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>Serial</th>
                         <th>Sistema</th>
                         <th>Data de StartUp</th>
                         <th>Tempo de Garantia</th>
@@ -24,8 +25,16 @@
                     <!-- ################ NOVO REGISTRO - INSERIR ##################### -->
                     <tr [formGroup]="frmForm" *ngIf="frmForm.value.id == 0" class="editing">
                         <td class="form-group col-12 col-sm-3">
+                            <input class="form-control" type="text" id="nomeSistema" formControlName="serial"
+                                [ngClass]="{ 'is-invalid' : submitted && f.serial.errors}" #serial autofocus="true">
+                            <span class="invalid-feedback" *ngIf="f.serial.errors?.required">Este
+                                campo é
+                                obrigatório</span>
+                            <div class="clearfix"></div>
+                        </td>
+                        <td class="form-group col-12 col-sm-3">
                             <input class="form-control" type="text" id="nomeSistema" formControlName="nomeSistema"
-                                [ngClass]="{ 'is-invalid' : submitted && f.nomeSistema.errors}" #nomeSistema autofocus="true">
+                                [ngClass]="{ 'is-invalid' : submitted && f.nomeSistema.errors}" #nomeSistema >
                             <span class="invalid-feedback" *ngIf="f.nomeSistema.errors?.required">Este
                                 campo é
                                 obrigatório</span>
@@ -71,6 +80,7 @@
                     <!-- - ################ LISTAGEM DOS REGISTROS #####################  -->
                     <tr [ngClass]="{ 'editing shadow' : frmForm.value.id == item.id}" [formGroup]="frmForm" *ngFor="let item of itens">
                         <!-- <th scope="row">{{item.id}}</th> -->
+                        <td *ngIf="frmForm.value.id != item.id">{{item.serial}}</td>
                         <td *ngIf="frmForm.value.id != item.id">{{item.nomeSistema}}</td>
                         <td *ngIf="frmForm.value.id != item.id">{{item.dataStartUp}}</td>
                         <!-- <td *ngIf="frmForm.value.id != item.id">{{item.tempoGarantia}}</td> -->
@@ -94,8 +104,12 @@
                         <!-- - ###########################################################  -->
                         <!-- - ################ EDITAR DOS REGISTROS #####################  -->
                         <td *ngIf="frmForm.value.id == item.id">
+                            <input type="text" class="form-control" formControlName="serial"
+                                [ngClass]="{ 'is-invalid' : submitted && f.serial.errors}" autofocus="true">
+                        </td>
+                        <td *ngIf="frmForm.value.id == item.id">
                             <input type="text" class="form-control" formControlName="nomeSistema"
-                                [ngClass]="{ 'is-invalid' : submitted && f.nomeSistema.errors}" autofocus="true">
+                                [ngClass]="{ 'is-invalid' : submitted && f.nomeSistema.errors}">
                         </td>
 
                         <td *ngIf="frmForm.value.id == item.id">
