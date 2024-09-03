@@ -1,3 +1,5 @@
+import { ListImoveisModule } from './../list-imoveis/list-imoveis.module';
+import { DesccricaoImoveisModule } from './../desccricao-imoveis/desccricao-imoveis.module';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,6 +13,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DataTablesModule } from "angular-datatables";
+import { ConexaoApiService } from './conexao-api.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,13 @@ import { DataTablesModule } from "angular-datatables";
     NgxMaskModule.forRoot(),
     RouterModule,
     NgSelectModule,
-    DataTablesModule
+    DataTablesModule,
+    ReactiveFormsModule,
+    NgSelectModule, 
+    ListImoveisModule,
+    DesccricaoImoveisModule
   ],
-  providers: [],
+  providers: [ConexaoApiService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppcoreModule { }

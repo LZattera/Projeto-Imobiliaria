@@ -1,0 +1,56 @@
+<div class="glass" style="display: grid; grid-template-columns: repeat(15, 1fr); grid-gap: 1rem; position: fixed; top: 0; left: 0; width: 100%; margin: 0.5rem; padding: 0.2rem; z-index: 1000;">
+    <div style="grid-column: 1 / 13; display: flex; justify-content: start; cursor: pointer; margin-left: 1em;">
+      <img [routerLink]="['..']" src="../../../../assets/images/logo/Logo Schneider - Negócios Imobiliários-Photoroom-Recorte.png" alt="logo Imobiliaria Schneider"  style="width: 60px; height: 60px;">
+    </div>
+    <div style="grid-column: 13 / 16; display: flex; justify-content: space-around; color: aliceblue; align-items: center; ">
+      <div style="font-size: .8em; line-height: .5em; padding-right: .5em;"> 
+        <p>Atendimento</p>
+        <p>(54) 9 96359597</p>
+        <p>(54) 9 99551997</p>
+      </div>
+    </div>
+</div>
+
+<div style="background-image: url('../../../../assets/images/view-castle-with-nature-landscape.jpg'); background-size: cover; background-position: center; background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.5); width: 100vw;height: 100vh; padding-top: 6.5%;">
+
+  <div class="row m-0" *ngIf="!loading">
+    <div class="col-md-1 " >
+      <button class="search-button" [routerLink]="['../listagem']" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+    </div>
+
+    <div class="col-md-5">
+      <swiper-container style="height: 80vh;">
+        <swiper-slide *ngFor="let foto of slideFotos">
+          <img [src]="foto" class="d-block w-100 animated-slide" alt="imagem imóvel" style="height: 100%;">
+        </swiper-slide>
+      </swiper-container>
+      <div style="display: flex; justify-content: center; color: aliceblue;">
+        <h3 class="m-0 pr-3">Arraste para o lado</h3>
+        <i class="fa fa-arrow-right pt-1" aria-hidden="true"></i>
+      </div>
+   </div>
+
+    <div class="col-md-6"  >
+        <div style="color:rgb(255, 255, 255); padding: .6rem ;display: flex; flex-direction: column; justify-content: center;align-items: center;background-color: rgba(0, 0, 0, 0.459);">
+          <h2><strong>{{ descricaoImovel.Bairro }}</strong></h2>
+          <p>Código Imóvel: <strong>{{CodigoImovel}}</strong></p>
+          <div style="display: flex; justify-content: space-between;">
+            <div style="padding: 1rem;">
+              <ul>
+                <li><strong>Quartos:</strong> {{ descricaoImovel.Dormitorios }}</li>
+                <li><strong>Banheiros:</strong> {{ descricaoImovel.BanheiroSocialQtd }}</li>
+                <li><strong>Área:</strong> {{ descricaoImovel.AreaTotal }} m²</li>
+              </ul>
+            </div>
+            <div style="padding: 1rem;">
+              <h2><strong>Valor:{{ descricaoImovel.ValorVenda | currency:'BRL' }} </strong> </h2>
+            </div>  
+          </div>
+          <p style="padding: 1rem;">{{ descricaoImovel.DescricaoWeb }}</p>
+          <p>Entre em Contato conosco: (54) 9 96359597 | (54) 9 99551997</p>
+
+        </div>
+
+      </div>
+    </div>
+</div>

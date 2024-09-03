@@ -1,5 +1,5 @@
-import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-import { TokenInterceptor } from './core/interceptors/token.interceptor';
+// import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+// import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,14 +16,16 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { register } from 'swiper/element/bundle';
 // import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 
 registerLocaleData(ptBR);
+register();
+
 
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -40,15 +42,10 @@ registerLocaleData(ptBR);
       backButtonText: 'Voltar',
     }),
     // NgChartsModule
-    //NgPopupsModule.forRoot()
+    //NgPopupsModule.forRoot(),
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
-    },
+
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'

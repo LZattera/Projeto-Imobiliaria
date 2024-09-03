@@ -1,224 +1,107 @@
-<div class="layout-wrapper layout-2">
-    <div class="layout-inner">
-        <!-- [ Layout sidenav ] Start -->
-        <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-white logo-dark">
-            <!-- Brand demo (see assets/css/demo/demo.css) -->
-
-            <div class="app-brand demo">
-
-                <div class="app-brand-logo demo ml-3">
-                    <a [routerLink]="['/appcore/dashboard']" style="width: 100%;">
-                        <div style="width: 12em;">
-                            <img src="../../../assets/img/logo.png" alt="Brand Logo" class="img-fluid">
-                        </div>
-                    </a>
+<header>
+    <nav>
+        <img src="../../../assets/images/logo/Logo Schneider - Negócios Imobiliários Branco Recorte.png" alt="logo" class="logo">
+        <ul>
+            <li style="padding-right: 2.5rem;">
+                <div style="font-weight: bold;">
+                    <p>Atendimento</p>
+                    <p>(54) 9 96359597</p>        
+                    <p>(54) 9 99551997</p>            
                 </div>
+            </li>
+        </ul>
+    </nav>
+</header>
 
-                <a href="javascript:void()" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
-                    <i class="ion ion-md-menu align-middle" style="color: white;"></i>
-                </a>
+<main>
+    <!-- filtro -->
+    <section>
+        <img src="../../../assets/images/view-castle-with-nature-landscape.jpg" alt="imagem castelo alemão" class="image-background"> 
+    
+        <div class="input-container" >
+            
+            <div class="glass relative">
             </div>
-            <!-- <div *ngIf="acesso != 1" class="sidenav-divider mt-0"></div> -->
-
-            <!-- Links -->
-            <ul class="sidenav-inner py-1">
-
-                <div style="width: 100%;">
-                    <!-- <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                    '/appcore/dashboard'}">
-                        <a [routerLink]="['/appcore/dashboard']" class="sidenav-link">
-                            <i class="material-icons sidenav-icon mr-2">&#xe88a;</i>
-                            <div> Dashboard</div>
-                        </a>
-                    </li> -->
-
-                    <li class="sidenav-divider mb-1"></li>
-                    <li class="sidenav-header small font-weight-semibold">Movimentos</li>
-
-                     <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                                                '/appcore/dashboard'}">
-                        <a [routerLink]="['/appcore/dashboard']" class="sidenav-link subitem">
-                            <i class="bi bi-graph-down sidenav-icon mr-2"></i>
-                            <div>Painel Controle</div>
-                        </a>
-                    </li>
-
-                    <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url =='/appcore/dashboardgraficos'}">
-                        <a [routerLink]="['/appcore/dashboardgraficos']" class="sidenav-link subitem">
-                        <i class="bi bi-graph-down sidenav-icon mr-2"></i>
-                        <div>Dashboard</div>
-                        </a>
-                    </li>
-                    <!--<li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                                        '/appcore/pedidos'}">
-                        <a [routerLink]="['/appcore/pedidos']" class="sidenav-link">
-                            <i class="bi bi-cart sidenav-icon mr-2"></i>
-                            <div>Lista de Pedidos</div>
-                        </a>
-                    </li>
-
-                    <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                                                '/appcore/cadastros/produtos'}">
-                        <a [routerLink]="['/appcore/cadastros/produtos']" class="sidenav-link subitem">
-                            <i class="sidenav-icon feather icon-list"></i>
-                            <div>Lista de Produtos</div>
-                        </a>
-                    </li>
- -->
-                    
-
-
-
-                    <li class="sidenav-divider mb-1" *ngIf="acesso == 1"></li>
-                    <li class="sidenav-header small font-weight-semibold" *ngIf="acesso == 1">Cadastros</li>
-                    <li class="sidenav-item" id="appCadastro" *ngIf="acesso == 1">
-                        <a onclick="menu('appCadastro')" class="sidenav-link sidenav-toggle">
-                            <i class="sidenav-icon feather icon-box"></i>
-                            <div>Cadastros</div>
-                        </a>
-                        <ul class="sidenav-menu">
-                            <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                            '/appcore/empresa'}">
-                            <a [routerLink]="['/appcore/empresa']" class="sidenav-link">
-                                <i class="material-icons sidenav-icon mr-2">&#xf02e;</i>
-                                <div>Empresas</div>
-                            </a>
-                        </li>
-                        <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                                    '/appcore/monitoramento'}">
-                            <a [routerLink]="['/appcore/monitoramento']" class="sidenav-link">
-                                <i class="material-icons sidenav-icon mr-2">&#xf02e;</i>
-                                <div>Monitoramento</div>
-                            </a>
-                        </li>
-                            <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                                        '/appcore/usuario'}">
-                                <a [routerLink]="['/appcore/usuario']" class="sidenav-link">
-                                    <i class="material-icons sidenav-icon mr-2">&#xf02e;</i>
-                                    <div>Usuários</div>
-                                </a>
-                            </li>
-                            <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                            '/appcore/cadastros/clientes'}">
-                                <a [routerLink]="['/appcore/cadastros/clientes']" class="sidenav-link subitem">
-                                    <i class="sidenav-icon feather icon-list"></i>
-                                    <div>Clientes</div>
-                                </a>
-                            </li>
-                            <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                            '/appcore/cadastros/variavel'}">
-                                <a [routerLink]="['/appcore/cadastros/variavel']" class="sidenav-link subitem">
-                                    <i class="sidenav-icon feather icon-list"></i>
-                                    <div>Variáveis</div>
-                                </a>
-                            </li>
-                            <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                            '/appcore/cadastros/tipo'}">
-                                <a [routerLink]="['/appcore/cadastros/tipo']" class="sidenav-link subitem">
-                                    <i class="sidenav-icon feather icon-list"></i>
-                                    <div>Tipo Variável</div>
-                                </a>
-                            </li>
-                            <li class="sidenav-item" (click)="scrollTop()" [ngClass]="{ 'selected' : prouter.url ==
-                            '/appcore/cadastros/setor'}">
-                                <a [routerLink]="['/appcore/cadastros/setor']" class="sidenav-link subitem">
-                                    <i class="sidenav-icon feather icon-list"></i>
-                                    <div>Setores</div>
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </li>
-
+            <div class="filtros">
+                <div style=" grid-column: 1 / 5;">
+                    <ng-select
+                    [items]="lstBairros"
+                    placeholder="Bairro - Selecione quantos desejar..."
+                    (search)="true"
+                    (clearable)="true"
+                    [multiple]="true"
+                    (change)="listagemBairros($event)"
+                    ></ng-select>
                 </div>
-
-
-            </ul>
-
-
+                <div style="grid-column: 5 / 8; ">
+                    <ng-select
+                    [items]="lstValores"
+                    [(ngModel)]="valorDe"
+                    (clearable)="true"
+                    placeholder="Valor De"
+                    [ngModel]="valorDe"
+                    ></ng-select>
+                </div>
+                <div style="grid-column: 8 / 11; ">
+                    <ng-select
+                    [items]="lstValores"
+                    [(ngModel)]="valorAte"
+                    (clearable)="true"
+                    placeholder="Valor Até"
+                    [ngModel]="valorAte"
+                    ></ng-select>
+                </div>
+                <div style="grid-column: 11/12 ; ">
+                    <button class="search-button" [routerLink]="['listagem']" [queryParams]="{ bairros: bairros, valorDe: valorDe, valorAte: valorAte }"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
         </div>
-        <!-- [ Layout sidenav ] End -->
-        <!-- [ Layout container ] Start -->
-        <div class="layout-container">
-            <!-- [ Layout navbar ( Header ) ] Start -->
-            <nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-dark container-p-x" id="layout-navbar">
+    </section>
 
-                <!-- Brand demo (see assets/css/demo/demo.css) -->
-                <a [routerLink]="['/appcore/dashboard']" class="navbar-brand app-brand demo d-lg-none py-0 mr-4">
-                    <span class="demo">
-                        <div style="width: 12em;">
-                            <!-- <img src="../../../assets/img/LogoWhite.png" alt="MaxiLog" class="img-fluid"> -->
+    <section class="imoveis-destaques">
+        <div class="container-fluid">
+            <div class="col-md-12 " style="color: red; background-color: black;">
+                <h1 class="">IMOVEIS EM DESTAQUE NA IMOBILIARIA</h1>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div *ngFor="let item of lstImoveisDestaque" class="col">
+                    <div class="card h-100">
+                    <img [src]="item.FotoDestaquePequena" class="card-img-top" alt="Imagem do Imóvel">
+                        <div class="card-body">
+                            <h5 class="card-title">Código: {{ item.Codigo }}</h5>
+                            <p class="card-text">Cidade: {{ item.Cidade }}</p>
+                            <p class="card-text">Bairro: {{ item.Bairro }}</p>
+                            <p class="card-text">Valor: R$ {{ item.ValorVenda }}</p>
+                            <button class="search-button" style="background-color: #4b774a; width: 100%;" (click)="DescricaoImovel(item)" >Descrição</button>
                         </div>
-                    </span>
-                </a>
-
-                <!-- Sidenav toggle (see assets/css/demo/demo.css) -->
-                <div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
-                    <a class="nav-item nav-link px-0 mr-lg-4" href="javascript:">
-                        <i class="ion ion-md-menu text-large align-middle"></i>
-                    </a>
-                </div>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="navbar-collapse collapse" id="layout-navbar-collapse">
-                    <!-- Divider -->
-                    <hr class="d-lg-none w-100 my-2">
-
-                    <div class="navbar-nav align-items-lg-center ml-auto">
-
-                        <!-- <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
-
-                            <span class="px-1 mr-lg-2 ml-2 ml-lg-0" style=" color: #fff !important; font-weight: bold;">
-                                <small *ngIf="acesso != 4">Representante</small>
-                                <small *ngIf="acesso == 4">Cliente</small><br />
-                                {{nomeRepresentateCliente}}</span>
-
-                        </span>
-                        <div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|
-                        </div> -->
-
-                        <div class="demo-navbar-user nav-item dropdown">
-
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
-
-                                    <span class="px-1 mr-lg-2 ml-2 ml-lg-0" style=" color: #fff !important; font-weight: bold;">
-                                        <small>Usuário</small><br />
-                                        {{nomeUsuario}}
-                                    </span>
-                                </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <!-- <a href="javascript:" class="dropdown-item">
-                                    <i class="feather icon-user text-muted"></i> &nbsp; Meu Perfil</a> -->
-                                <a href="javascript:" class="dropdown-item" (click)="logout()">
-                                    <i class="feather icon-power text-danger"></i> &nbsp; Sair
-                                </a>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-            </nav>
-
-
-            <router-outlet></router-outlet>
-
-
+            </div>
+            
         </div>
-    </div>
-</div>
-<div class="layout-overlay layout-sidenav-toggle"></div>
-<!-- 
-<a style="
-    position:fixed; width:100vw; bottom:0px; right:0px; 
-    background-color: rgba(24, 28, 33, 0.025); color:rgb(90, 90, 90, 0.75); 
-    text-align: right;" class="pr-3">
-    <div style="font-style: italic;">Desenvolvido por MaxiLog e Coopertec Soluções em Sistemas. Todos os direitos
-        reservados -
-        Versão {{version}}</div>
-</a> -->
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col logoFooter" >
+                    <img src="../../../assets/images/logo/Logo Schneider - Negócios Imobiliários Sem Fundo.png" alt="Logo da Empresa">
+                </div>
+                <div class="col" style="color: aliceblue;">
+                    <h2>Imobiliaria Schneider</h2>
+                    <p>Endereço completo</p>
+                    <p>Telefone: (XX) XXXX-XXXX</p>
+                    <p>Email: leticiazatera'@'gmail.com</p>
+                    <ul class="social-media">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>  
+                    </ul>
+                </div>
+            </div>
+        </div>  
+    
+    </footer>
+    
+</main>
+
+<!-- <list-imoveis [Bairros]="bairros"  [ValorDe]="valorDe"  [ValorAte]="valorAte" *ngIf="listagem"></list-imoveis> -->

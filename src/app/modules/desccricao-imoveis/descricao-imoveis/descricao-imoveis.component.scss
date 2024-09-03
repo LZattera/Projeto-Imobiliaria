@@ -1,0 +1,45 @@
+
+.animated-slide {
+    animation: slide 2s ease-in-out 3;
+}
+
+@keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    50%{
+        transform: translateX(-50px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+
+.btn-voltar{
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+
+.search-button {
+  cursor: pointer;
+  /* Estilos para o botão */
+  padding: 10px;
+  background-color: #97D6B1; /* Verde */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  
+  &:hover{
+      cursor: pointer;
+      transform: scale(1.1);
+  }
+}
+
+.glass{
+  // background: linear-gradient(135deg, rgba(238, 15, 15, 0.849), rgba(211, 28, 28, 0.849));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.37), rgba(255,255,255,0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
