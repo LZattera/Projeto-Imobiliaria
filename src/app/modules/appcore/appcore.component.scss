@@ -176,3 +176,29 @@ footer {
     transform: scale(1.7); /* Aumenta em 20% (1.2x) */
     color: #97D6B1;
 }
+
+.card-imovel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #97D6B1, #8dc2a3);
+    padding-bottom: .5rem;
+  
+    &:hover{
+      font-weight: 300;
+      transform: scale(1.1);
+      background-color: #97D6B1;
+      cursor: pointer;
+      z-index: 9;
+      .imagem-lista{
+        // transform: scale(1.05);
+      }
+    }
+  }
+
+  .imagem-lista{
+    margin: 0;
+    width: fit-content;
+    height: 20rem;
+  }
+  

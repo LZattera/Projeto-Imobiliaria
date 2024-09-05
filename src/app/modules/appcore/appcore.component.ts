@@ -165,7 +165,7 @@ export class AppcoreComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ListarImoveisDestaque();
+    // this.ListarImoveisDestaque();
     this.Search();
   }
 

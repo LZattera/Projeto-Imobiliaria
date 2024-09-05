@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConexaoApiService } from '../../appcore/conexao-api.service'
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'list-imoveis',
@@ -159,30 +160,71 @@ export class ListImoveisComponent implements OnInit {
  descricao: boolean = false;
  semItens: boolean = false;
 
+ frm: FormGroup
+
   constructor(
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private conexaoapiService: ConexaoApiService
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.bairros = params['bairros'];
-      this.valorAte = params['valorAte'];
-      this.valorDe = params['valorDe'];
+    // Cria o formulário
+  this.createForm();
+
+  // Recupera parâmetros da rota
+  this.route.queryParams.subscribe(params => {
+    this.frm.controls.bairros.setValue(params['bairros']);
+    this.frm.controls.valorAte.setValue(params['valorAte']);
+    this.frm.controls.valorDe.setValue(params['valorDe']);
+  });
+
+  if (this.frm.value.valorDe == null && this.frm.value.bairros == null && this.frm.value.valorAte == null) {
+    // Recupera filtros do localStorage
+    const filtros = JSON.parse(localStorage.getItem('imobSch'));
+    // Verifica se filtros não são nulos ou indefinidos
+    if (filtros != null && filtros != undefined) {
+      // Verifica se algum valor dos filtros está presente
+      if (filtros.valorDe != null || filtros.bairros != null || filtros.valorAte != null) {
+        // Atualiza os valores do formulário com os valores dos filtros
+        this.frm.controls.valorAte.setValue(filtros.valorAte);
+        this.frm.controls.valorDe.setValue(filtros.valorDe);
+        this.frm.controls.bairros.setValue(filtros.bairros);
+        console.log(this.frm.value, 'filtros');
+        
+        // Executa a busca
+        this.Search();
+      }
+    }
+  }
+
+  // Chama o método para filtrar
+  this.Filtrar();
+    
+  }
+
+  createForm(){
+    this.frm = this.fb.group({
+      bairros:[],
+      valorAte:[],
+      valorDe:[],
     });
-    console.log('valores', this.bairros, this.valorAte, this.valorDe);
+  }
+
+  Filtrar(){
+    localStorage.setItem('imobSch', JSON.stringify(this.frm.value));
     this.Search();
   }
 
-  listagemBairros(item){  this.bairros = item; }
+  listagemBairros(item){  this.frm.controls.bairros.setValue(item); }
 
   Search():Promise<void>{
     return new Promise((resolve, reject)=>{
       this.loading=true;
       this.semItens=false;
-      console.log(this.valorAte, this.valorDe, this.bairros, 'sssssssssssssssssssssssss')
-      this.conexaoapiService.listarImoveis(this.bairros,[this.valorDe, this.valorAte],this.fields).subscribe({
+      console.log(this.frm.value, 'sssssssssssssssssssssssss')
+      this.conexaoapiService.listarImoveis(this.frm.value.bairros,[this.frm.value.valorDe, this.frm.value.valorAte],this.fields).subscribe({
         next:(res)=>{
           this.lstImoveis = Object.values(res);
           if(this.lstImoveis.length == 2 && this.lstImoveis[1] == 'A pesquisa não retornou resultados.'){  this.semItens = true;  }

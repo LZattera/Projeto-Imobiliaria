@@ -15,7 +15,7 @@
 
 <main>
     <!-- filtro -->
-    <section>
+    <section id="heroSection">
         <img src="../../../assets/images/view-castle-with-nature-landscape.jpg" alt="imagem castelo alemão" class="image-background"> 
     
         <div class="input-container" >
@@ -59,38 +59,46 @@
     </section>
 
     <section class="imoveis-destaques">
-        <div class="container-fluid">
-            <div class="col-md-12 " style="color: red; background-color: black;">
-                <h1 class="">IMOVEIS EM DESTAQUE NA IMOBILIARIA</h1>
-            </div>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                <div *ngFor="let item of lstImoveisDestaque" class="col">
-                    <div class="card h-100">
-                    <img [src]="item.FotoDestaquePequena" class="card-img-top" alt="Imagem do Imóvel">
-                        <div class="card-body">
-                            <h5 class="card-title">Código: {{ item.Codigo }}</h5>
-                            <p class="card-text">Cidade: {{ item.Cidade }}</p>
-                            <p class="card-text">Bairro: {{ item.Bairro }}</p>
-                            <p class="card-text">Valor: R$ {{ item.ValorVenda }}</p>
-                            <button class="search-button" style="background-color: #4b774a; width: 100%;" (click)="DescricaoImovel(item)" >Descrição</button>
-                        </div>
-                    </div>
-                </div>
+        <div class="container-fluid" >
+            <div class="col-md-12 pb-2" style="margin: 1rem;">
+                <h1 class="">Imóveis em Destaque</h1>
             </div>
             
+            <div style="display: grid; grid-template-columns: repeat(5, 14rem); gap: 3.3rem; width: 100%; margin: 1rem;" >
+        
+                <div *ngFor="let item of lstImoveisDestaque">
+                  <div class="card-imovel" style="justify-self: center; " (click)="DescricaoImovel(item)">
+                    <div>
+                      <img [src]="item.FotoDestaquePequena" class="imagem-lista" alt="Imagem do Imóvel" >
+                    </div>
+                    <div>
+                      <h5 class="card-title">Código: {{ item.Codigo }}</h5>
+                      <p class="card-text">Cidade: {{ item.Cidade }}</p>
+                      <p class="card-text">Bairro: {{ item.Bairro }}</p>
+                      <p class="card-text">Valor: R$ {{ item.ValorVenda }}</p>
+                      <button class="search-button" style="background-color: #4b774a; width: 100%;" (click)="DescricaoImovel(item)" >Descrição</button>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
         </div>
     </section>
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col logoFooter" >
-                    <img src="../../../assets/images/logo/Logo Schneider - Negócios Imobiliários Sem Fundo.png" alt="Logo da Empresa">
+                    <a href="#heroSection">
+                        <img src="../../../assets/images/logo/Logo Schneider - Negócios Imobiliários Sem Fundo.png" alt="Logo da Empresa">
+                    </a>
                 </div>
                 <div class="col" style="color: aliceblue;">
                     <h2>Imobiliaria Schneider</h2>
                     <p>Endereço completo</p>
-                    <p>Telefone: (XX) XXXX-XXXX</p>
+                    <p>Contatos: (54) 9 96359597 | (54) 9 99551997</p>
                     <p>Email: leticiazatera'@'gmail.com</p>
+                    link para abrir o whats e as outras redes sociais
                     <ul class="social-media">
                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>

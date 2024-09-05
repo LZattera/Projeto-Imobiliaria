@@ -1,7 +1,7 @@
 <div style="width: 100vw; height: 100%;" >
 
   <!-- ---- FILTROS ---- -->
-  <div class="glass" style="display: grid; grid-template-columns: repeat(15, 1fr); grid-gap: 1rem; position: fixed; top: 0; left: 0; width: 100%; margin: 0.5rem; padding: 0.2rem; z-index: 1000;">
+  <div [formGroup]="frm" class="glass" style="display: grid; grid-template-columns: repeat(15, 1fr); grid-gap: 1rem; position: fixed; top: 0; left: 0; width: 100%; margin: 0.5rem; padding: 0.2rem; z-index: 1000;">
         <div style="grid-column: 1 / 3; display: flex; justify-content: space-around;">
           <button class="search-button" [routerLink]="['..']" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
         </div>
@@ -18,23 +18,21 @@
         <div style="grid-column: 7 / 10;">
             <ng-select
             [items]="lstValores"
-            [(ngModel)]="valorDe"
             (clearable)="true"
             placeholder="Valor De"
-            [ngModel]="valorDe"
+            formControlName="valorDe"
             ></ng-select>
         </div>
         <div style="grid-column: 10 / 13;">
             <ng-select
             [items]="lstValores"
-            [(ngModel)]="valorAte"
             (clearable)="true"
             placeholder="Valor Até"
-            [ngModel]="valorAte"
+            formControlName="valorAte"
             ></ng-select>
         </div>
         <div style="grid-column: 13 / 14;">
-            <button class="search-button" (click)="Search()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="search-button" (click)="Filtrar()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div style="grid-column: 14 / 16; content: '';"></div>
   </div>
@@ -71,6 +69,7 @@
         </div>
         
       </div>
+      
     </div>
 
 </div>
