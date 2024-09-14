@@ -2,8 +2,8 @@
     <nav>
         <img src="../../../assets/images/logo/Logo Schneider - Negócios Imobiliários Branco Recorte.png" alt="logo" class="logo">
         <ul>
-            <li style="padding-right: 2.5rem;">
-                <div style="font-weight: bold;">
+            <li class="contact-info">
+                <div>
                     <p>Atendimento</p>
                     <p>(54) 9 96359597</p>        
                     <p>(54) 9 99551997</p>            
@@ -18,12 +18,10 @@
     <section id="heroSection">
         <img src="../../../assets/images/view-castle-with-nature-landscape.jpg" alt="imagem castelo alemão" class="image-background"> 
     
-        <div class="input-container" >
-            
-            <div class="glass relative">
-            </div>
+        <div class="input-container">
+            <div class="glass"></div>
             <div class="filtros">
-                <div style=" grid-column: 1 / 5;">
+                <div class="filter-item-1">
                     <ng-select
                     [items]="lstBairros"
                     placeholder="Bairro - Selecione quantos desejar..."
@@ -33,7 +31,7 @@
                     (change)="listagemBairros($event)"
                     ></ng-select>
                 </div>
-                <div style="grid-column: 5 / 8; ">
+                <div class="filter-item-2">
                     <ng-select
                     [items]="lstValores"
                     [(ngModel)]="valorDe"
@@ -42,7 +40,7 @@
                     [ngModel]="valorDe"
                     ></ng-select>
                 </div>
-                <div style="grid-column: 8 / 11; ">
+                <div class="filter-item-3">
                     <ng-select
                     [items]="lstValores"
                     [(ngModel)]="valorAte"
@@ -51,23 +49,24 @@
                     [ngModel]="valorAte"
                     ></ng-select>
                 </div>
-                <div style="grid-column: 11/12 ; ">
-                    <button class="search-button" [routerLink]="['listagem']" [queryParams]="{ bairros: bairros, valorDe: valorDe, valorAte: valorAte }"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="filter-item-4">
+                    <button class="search-button" [routerLink]="['listagem']" [queryParams]="{ bairros: bairros, valorDe: valorDe, valorAte: valorAte }">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="imoveis-destaques">
-        <div class="container-fluid" >
-            <div class="col-md-12 pb-2" style="margin: 1rem;">
-                <h1 class="">Imóveis em Destaque</h1>
+        <div class="container-fluid">
+            <div class="pb-2">
+                <h1>Imóveis em Destaque</h1>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(5, 14rem); gap: 3.3rem; width: 100%; margin: 1rem;" >
-        
+            <div class="imoveis-grid">
                 <div *ngFor="let item of lstImoveisDestaque">
-                  <div class="card-imovel" style="justify-self: center; " (click)="DescricaoImovel(item)">
+                  <div class="card-imovel" (click)="DescricaoImovel(item)">
                     <div>
                       <img [src]="item.FotoDestaquePequena" class="imagem-lista" alt="Imagem do Imóvel" >
                     </div>
@@ -76,29 +75,28 @@
                       <p class="card-text">Cidade: {{ item.Cidade }}</p>
                       <p class="card-text">Bairro: {{ item.Bairro }}</p>
                       <p class="card-text">Valor: R$ {{ item.ValorVenda }}</p>
-                      <button class="search-button" style="background-color: #4b774a; width: 100%;" (click)="DescricaoImovel(item)" >Descrição</button>
+                      <button class="search-button" (click)="DescricaoImovel(item)">Descrição</button>
                     </div>
                   </div>
                 </div>
-                
-              </div>
-
+            </div>
         </div>
     </section>
+
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col logoFooter" >
+                <div class="col logoFooter">
                     <a href="#heroSection">
                         <img src="../../../assets/images/logo/Logo Schneider - Negócios Imobiliários Sem Fundo.png" alt="Logo da Empresa">
                     </a>
                 </div>
-                <div class="col" style="color: aliceblue;">
+                <div class="col texto-footer">
                     <h2>Imobiliaria Schneider</h2>
                     <p>Endereço completo</p>
                     <p>Contatos: (54) 9 96359597 | (54) 9 99551997</p>
                     <p>Email: leticiazatera'@'gmail.com</p>
-                    link para abrir o whats e as outras redes sociais
+                    <p>link para abrir o whats e as outras redes sociais</p>
                     <ul class="social-media">
                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
@@ -107,9 +105,5 @@
                 </div>
             </div>
         </div>  
-    
     </footer>
-    
 </main>
-
-<!-- <list-imoveis [Bairros]="bairros"  [ValorDe]="valorDe"  [ValorAte]="valorAte" *ngIf="listagem"></list-imoveis> -->

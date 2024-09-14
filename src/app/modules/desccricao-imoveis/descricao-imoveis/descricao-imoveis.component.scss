@@ -1,20 +1,52 @@
+.header-descricao{
+  display: grid; 
+  grid-template-columns: repeat(15, 1fr); 
+  grid-gap: 1rem; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  margin: 0.5rem; 
+  padding: 0.2rem; 
+  z-index: 1000;
+}
+
+.header-descricao-logo{
+  grid-column: 1 / 13; 
+  display: flex; 
+  justify-content: start; 
+  cursor: pointer; 
+  margin-left: 1em;
+}
+
+.header-descricao-contato{
+  grid-column: 13 / 16; 
+  display: flex; 
+  justify-content: space-around; 
+  color: aliceblue; 
+  align-items: center;  
+}
+
+.header-descricao-contato div{
+  font-size: .8em; line-height: .5em; padding-right: .5em;
+}
+
 
 .animated-slide {
-    animation: slide 2s ease-in-out 3;
+  animation: slide 2s ease-in-out 3;
 }
 
 @keyframes slide {
-    0% {
-      transform: translateX(0);
-    }
-    50%{
-        transform: translateX(-50px);
-    }
-    100% {
-      transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
   }
-
+  50%{
+      transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
 .btn-voltar{
   &:hover{
@@ -30,7 +62,7 @@
   color: white;
   border: none;
   border-radius: 5px;
-  
+
   &:hover{
       cursor: pointer;
       transform: scale(1.1);
@@ -38,8 +70,104 @@
 }
 
 .glass{
-  // background: linear-gradient(135deg, rgba(238, 15, 15, 0.849), rgba(211, 28, 28, 0.849));
+// background: linear-gradient(135deg, rgba(238, 15, 15, 0.849), rgba(211, 28, 28, 0.849));
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.37), rgba(255,255,255,0));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+
+.slider{
+height: 80vh;
+}
+
+.descricao-imovel{
+  background-image: url('../../../../assets/images/view-castle-with-nature-landscape.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-blend-mode: multiply; 
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh; 
+  padding-top: 6.5%;
+}
+
+.imovel{
+display: grid;
+grid-template-columns: repeat(12, 6rem);
+gap:1rem;
+margin-left:1rem;
+}
+
+.imovel-item-1{
+grid-column: span 1; 
+}
+
+.imovel-item-2{
+grid-column: span 5; 
+}
+
+.imovel-item-3{
+grid-column: span 6; 
+}
+
+.foto{
+display: block;
+width: 100%;
+height: 100%
+}
+.logo{
+  width: 500px;
+  height: 60px;
+}
+@media (max-width: 480px) {
+  .logo{
+    min-width: 150px;
+  }
+
+  .header-descricao-logo{
+    grid-column: span 8;
+  }
+  
+  .header-descricao-contato{
+    grid-column: span 7;
+    display: flex;
+    justify-content: space-around;
+    font-size: medium;
+  }
+
+  .descricao-imovel{
+    padding-top: 6rem;
+  }
+
+  .imovel{
+    margin: 0;
+  }
+
+  .slider{
+    width: 100vw;
+    height: 80vh;
+  }
+
+  .foto{
+    display: block;
+    width: 100%;
+  }
+
+  .imovel{
+    grid-template-columns: repeat(1, auto);
+  }
+
+  .imovel-item-1{
+    grid-column: span 12; 
+  }
+
+  .imovel-item-2{
+    grid-column: span 12; 
+  }
+
+  .imovel-item-3{
+    padding: 0;
+    grid-column: span 12 ; 
+    background-color: black;
+  }
 }
