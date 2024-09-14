@@ -129,8 +129,8 @@ nav ul li {
 .imoveis-grid {
     display: grid;
     grid-template-columns: repeat(5, 14rem);
-    gap: 3.3rem;
-    margin: 1rem;
+    gap: 3rem;
+    // margin: 1rem;
     width: 100%;
 }
 
@@ -237,6 +237,7 @@ footer {
 
     .imoveis-grid {
         margin: 0;
+        padding: 0;
         display: grid;
         grid-template-columns: repeat(1, auto);
     }
