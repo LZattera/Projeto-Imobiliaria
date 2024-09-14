@@ -1,94 +1,134 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap');
 
-*, *::before, *::after {
+*, *::before, *::after{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body {
+body{
     font-family: "Poppins", sans-serif;
 }
 
-.logo {
-    width: 200px; /* Ajuste a largura para tamanhos menores */
+.logo{
+    width: 250px;
 }
 
-header {
-    position: absolute; /* Alterado para fixed */
+header{
+    position: absolute;
     z-index: 999;
     width: 100%;
+    height: 50px;
     top: 0;
-    left: 0;
+    bottom: 0;
     margin: 0;
 }
 
-header nav {
-    max-width: 100%;
-    padding: 0 1rem;
+header nav{
+    max-width: 1400px;
+    margin: auto 0;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+/* Estilizando o nav-bar */
+nav {
+    display: flex;          /* Habilita o layout flexível */
+    justify-content: space-between; /* Distribui o espaço entre logo e menu */
+    align-items: center;    /* Alinha itens verticalmente ao centro */
+    position: relative;     /* Define a posição relativa para ajustar os itens internos */
+}
 
+/* Estilizando o ul */
 nav ul {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    display: flex;            /* Torna a lista flexível */
+    list-style-type: none;    /* Remove marcadores de lista */
+    margin: 0;                /* Remove margem */
+    padding: 0;               /* Remove padding */
+    position: absolute;       /* Posiciona absolutamente dentro do nav-bar */
+    top: 2rem;                   /* Alinha no topo */
+    right: 0;                 /* Alinha à direita */
 }
 
-nav ul li {
-    margin-right: 1rem; 
+/* Estilizando o li */
+nav ul li a {
+    margin-left: 15px;        /* Espaçamento entre os itens da lista */
+    text-decoration: none;
+    color: #fff;
+    padding: 0 1.5rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 0.83rem;
 }
 
-.contact-info p {
-    color: #070707; /* Adiciona cor ao texto */
+// header ul{
+//    display:flex;
+//     list-style: none;
+//     align-items: center;
+// }
+
+// header ul a {
+//     text-decoration: none;
+//     color: #fff;
+//     padding: 0 1.5rem;
+//     text-transform: uppercase;
+//     font-weight: 300;
+//     font-size: 0.83rem;
+// }
+
+.search a {
+    font-size: 1.05rem;
+    padding: 0 3rem;
 }
 
-.search-button {
-    padding: 8px;
-    color: white;
-    border: none;
-    background-color: #4b774a;
-    border-radius: 5px;
-}
-
-.search-button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-.main {
+main{
     position: relative;
+    height: 100vh;
     width: 100vw;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .image-background {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Ajustar a largura conforme necessário */
+    height: auto ; /* Ajustar a altura conforme necessário */
+    position: relative; /* Posiciona a imagem como referência para outros elementos */
 }
 
 .input-container {
-    width: 90%;
-    max-width: 1200px; /* Define uma largura máxima para grandes telas */
+    width: 70%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transform: translate(-50%, -50%); /* Centraliza o container */
+    display: flex; /* Transforma o container em um flex container */
+    align-items: center; /* Alinha os itens verticalmente no centro */
 }
 
-.glass {
+
+.search-button {
+    /* Estilos para o botão */
+    padding: 10px;
+    background-color: #97D6B1; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+}
+
+.glass{
+    // background: linear-gradient(135deg, rgba(238, 15, 15, 0.849), rgba(211, 28, 28, 0.849));
     background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.18);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+
     position: absolute;
     top: 0;
     left: 0;
@@ -99,39 +139,42 @@ nav ul li {
 
 .filtros {
     margin: 1.5rem;
+    padding-left: 6.5rem;
     width: 100%;
     z-index: 2;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 5fr); 
     gap: 10px;
+    justify-content: center; align-items: center;
+/* Outras propriedades de estilo da sua form-group */
 }
 
-.filter-item-1 {
-    grid-column: 1 / 5;
+footer {
+    background: linear-gradient(45deg, rgba(15, 15, 15, 0.979), rgba(0, 0, 0, 0.774));
+    padding: 20px;
+    text-align: center;
 }
 
-.filter-item-2 {
-    grid-column: 5 / 8;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.filter-item-3 {
-    grid-column: 8 / 11;
+.logoFooter img {
+    max-width: 150px; /* Ajuste o tamanho máximo do logo */
+}
+.social-media li {
+    display: inline-block;
+    margin: 0 10px;
 }
 
-.filter-item-4 {
-    grid-column: 11 / 12;
+.social-media a i{
+    color: #fff;
 }
 
-.imoveis-destaques {
-    padding: 1rem;
-}
-
-.imoveis-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 14rem);
-    gap: 3.3rem;
-    margin: 1rem;
-    width: 100%;
+.social-media a i:hover{
+    transform: scale(1.7); /* Aumenta em 20% (1.2x) */
+    color: #97D6B1;
 }
 
 .card-imovel{
@@ -147,115 +190,15 @@ nav ul li {
       background-color: #97D6B1;
       cursor: pointer;
       z-index: 9;
+      .imagem-lista{
+        // transform: scale(1.05);
+      }
     }
   }
 
-.imagem-lista {
+  .imagem-lista{
+    margin: 0;
     width: fit-content;
     height: 20rem;
-}
-
-footer {
-    background: linear-gradient(45deg, rgba(15, 15, 15, 0.979), rgba(0, 0, 0, 0.774));
-    padding: 20px;
-    text-align: center;
-}
-
-.container {
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.logoFooter img {
-    max-width: 120px; /* Ajuste o tamanho máximo do logo */
-}
-
-.texto-footer{
-    color: #fff;
-}
-
-.social-media li {
-    display: inline-block;
-    margin: 0 5px;
-}
-
-.social-media a i {
-    color: #fff;
-}
-
-.social-media a i:hover {
-    transform: scale(1.5);
-    color: #97D6B1;
-}
-
-@media (max-width: 480px) {
-    .logo {
-        width: 120px; /* Ajusta o logo para telas muito pequenas */
-    }
-
-    nav ul {
-        padding-left: 0;
-    }
-
-    .image-background {
-        height: 50vh;
-    }
-
-    .input-container {
-        width: 100%; /* Ajusta a largura para a tela inteira */
-        top:30%;
-    }
-
-    .glass{
-        height: 25vh;
-    }
-
-    .filtros {
-        grid-template-columns: repeat(1, 1fr); /* Uma coluna em dispositivos menores */
-        padding-left: 0;
-    }
-
-    .filter-item-1 {
-        grid-column: span 12;
-    }
-
-    .filter-item-2 {
-        grid-column: span 12;
-    }
-
-    .filter-item-3 {
-        grid-column: span 12;
-    }
-
-    .filter-item-4 {
-        grid-column: span 12;
-    }
-    
-    .search-button{
-        width: 100%;
-    }
-
-    .imoveis-grid {
-        margin: 0;
-        display: grid;
-        grid-template-columns: repeat(1, auto);
-    }
-
-    .card-imovel {
-        padding: 0.5rem;
-    }
-
-    footer .container {
-        padding: 0;
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    .logoFooter img {
-        max-width: 80px; 
-    }
-
-    .social-media li {
-        margin: 0 2px;
-    }
-}
+  }
+  

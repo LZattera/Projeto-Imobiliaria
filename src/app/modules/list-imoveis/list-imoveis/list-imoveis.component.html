@@ -1,11 +1,11 @@
 <div style="width: 100vw; height: 100%;" >
 
   <!-- ---- FILTROS ---- -->
-  <div [formGroup]="frm" class="filtros-lista glass">
-        <div class="btn-voltar">
-          <button class="search-button " [routerLink]="['..']" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+  <div [formGroup]="frm" class="glass" style="display: grid; grid-template-columns: repeat(15, 1fr); grid-gap: 1rem; position: fixed; top: 0; left: 0; width: 100%; margin: 0.5rem; padding: 0.2rem; z-index: 1000;">
+        <div style="grid-column: 1 / 3; display: flex; justify-content: space-around;">
+          <button class="search-button" [routerLink]="['..']" ><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
         </div>
-        <div class="filtro-item-1">
+        <div style="grid-column: 3 / 7;">
             <ng-select
             [items]="lstBairros"
             placeholder="Bairro"
@@ -15,7 +15,7 @@
             (change)="listagemBairros($event)"
             ></ng-select>
         </div>
-        <div class="filtro-item-2">
+        <div style="grid-column: 7 / 10;">
             <ng-select
             [items]="lstValores"
             (clearable)="true"
@@ -23,7 +23,7 @@
             formControlName="valorDe"
             ></ng-select>
         </div>
-        <div class="filtro-item-3">
+        <div style="grid-column: 10 / 13;">
             <ng-select
             [items]="lstValores"
             (clearable)="true"
@@ -31,14 +31,14 @@
             formControlName="valorAte"
             ></ng-select>
         </div>
-        <div class="filtro-item-4">
+        <div style="grid-column: 13 / 14;">
             <button class="search-button" (click)="Filtrar()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div style="grid-column: 14 / 16; content: '';"></div>
   </div>
 
     
-    <div class="listagem" >
+    <div style="display: flex; justify-content: center; margin-top: 4rem;" >
  
       <div *ngIf="loading">
         <div class="col" style="padding: 20px 0;">
@@ -51,7 +51,7 @@
         <h1>Não foi localizado nenhum imóvel com os filtros.</h1>
       </div>
 
-      <div class="lista-imoveis" *ngIf="!loading && semItens == false">
+      <div style="display: grid; grid-template-columns: repeat(5, 14rem); gap: 3.3rem; width: 100%; margin: 1rem;" *ngIf="!loading && semItens == false">
         
         <div *ngFor="let item of lstImoveis">
           <div class="card-imovel" style="justify-self: center; " (click)="DescricaoImovel(item)">
@@ -59,7 +59,7 @@
               <img [src]="item.FotoDestaquePequena" class="imagem-lista" alt="Imagem do Imóvel" >
             </div>
             <div>
-              <h3 class="card-title"><strong>Código: {{ item.Codigo }}</strong></h3>
+              <h5 class="card-title">Código: {{ item.Codigo }}</h5>
               <p class="card-text">Cidade: {{ item.Cidade }}</p>
               <p class="card-text">Bairro: {{ item.Bairro }}</p>
               <p class="card-text">Valor: R$ {{ item.ValorVenda }}</p>
