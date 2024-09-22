@@ -119,6 +119,21 @@ height: 100%
   width: 500px;
   height: 60px;
 }
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.descricao-text {
+  max-height: 15rem; /* Defina a altura máxima da div aqui */
+  overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo para destacar a área da descrição */
+  width: 100%; /* Para garantir que a largura da descrição ocupe todo o espaço */
+  border-radius: 5px; /* Bordas arredondadas para estilo */
+}
+
 @media (max-width: 480px) {
   .logo{
     min-width: 150px;

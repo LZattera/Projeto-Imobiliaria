@@ -5,8 +5,8 @@
   <div class="header-descricao-contato">
     <div> 
       <p>Atendimento</p>
-      <p>(54) 9 96359597</p>
-      <p>(54) 9 99551997</p>
+      <p><a href="https://wa.me/5554996359597?text=Olá,%20estou%20interessado!" target="_blank">(54) 9 96359597</a></p>        
+      <p><a href="https://wa.me/5554999551997?text=Olá,%20estou%20interessado!" target="_blank">(54) 9 99551997</a></p>        
     </div>
   </div>
 </div>
@@ -47,9 +47,13 @@
             <h2><strong>Valor:{{ descricaoImovel.ValorVenda | currency:'BRL' }} </strong> </h2>
           </div>  
         </div>
-        <p style="padding: 1rem;">{{ descricaoImovel.DescricaoWeb }}</p>
-        <p>Entre em Contato conosco: (54) 9 96359597 | (54) 9 99551997</p>
-
+        
+        <!-- <p style="padding: 1rem;" class="text-limit">{{ descricaoImovel.DescricaoWeb }}</p> -->
+        <div class="descricao-text">
+          <p>{{ descricaoImovel.DescricaoWeb }}</p>
+        </div>
+        Colocar a mensagem customizadado com o codigo do imovel
+        <p style="padding-top: 1rem;">Entre em Contato conosco: <a href="https://wa.me/5554996359597?text=Olá,%20estou%20interessado!" target="_blank">(54) 9 96359597</a> | <a href="https://wa.me/5554999551997?text=Olá,%20estou%20interessado!" target="_blank">(54) 9 99551997</a></p>        
       </div>
 
     </div>

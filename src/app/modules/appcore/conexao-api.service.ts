@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ConexaoApiService {
 
   key:string = '67c675f8307af31f02d494e21bda6470';
-  apiUrl:string = 'http://cli42332-rest.vistahost.com.br/';
+  apiUrl:string = 'https://cli42332-rest.vistahost.com.br/';
   constructor(
     private http :HttpClient
   ) { }

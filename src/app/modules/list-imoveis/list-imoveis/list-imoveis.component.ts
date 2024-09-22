@@ -191,7 +191,6 @@ export class ListImoveisComponent implements OnInit {
         this.frm.controls.valorAte.setValue(filtros.valorAte);
         this.frm.controls.valorDe.setValue(filtros.valorDe);
         this.frm.controls.bairros.setValue(filtros.bairros);
-        console.log(this.frm.value, 'filtros');
         
         // Executa a busca
         this.Search();
@@ -223,13 +222,14 @@ export class ListImoveisComponent implements OnInit {
     return new Promise((resolve, reject)=>{
       this.loading=true;
       this.semItens=false;
-      console.log(this.frm.value, 'sssssssssssssssssssssssss')
+      if(this.frm.value.valorAte ==null || this.frm.value.valorAte == '' || this.frm.value.valorAte == undefined){
+        this.frm.controls.valorAte.setValue(1000000);
+        this.frm.controls.valorDe.setValue(250000);
+      }
       this.conexaoapiService.listarImoveis(this.frm.value.bairros,[this.frm.value.valorDe, this.frm.value.valorAte],this.fields).subscribe({
         next:(res)=>{
           this.lstImoveis = Object.values(res);
           if(this.lstImoveis.length == 2 && this.lstImoveis[1] == 'A pesquisa não retornou resultados.'){  this.semItens = true;  }
-          console.log(this.lstImoveis, 'listagem');
-          console.log(this.lstImoveis.length, 'listagem');
           this.loading = false;
           resolve();
         },
