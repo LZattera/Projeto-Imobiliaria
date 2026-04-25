@@ -148,11 +148,13 @@ export class ListImoveisComponent implements OnInit {
                        'Vinhedos',
  ];
 
- lstValores: any[] = [250000, 300000, 400000, 700000, 800000, 900000, 1000000]
+ lstValores: any[] = [100000,200000, 300000, 400000, 700000, 800000, 900000, 1000000, 1500000, 
+                      2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 5500000, 6000000, 6500000, 7000000, 
+                      7500000, 8000000, 8500000, 9000000, 9500000, 10000000];
 
- bairros: string;
- valorAte: number;
- valorDe: number;
+ bairros: string = "";
+ valorAte: number = 100000;
+ valorDe: number = 10000000;
 
  loading : boolean = false;
 
@@ -160,7 +162,7 @@ export class ListImoveisComponent implements OnInit {
  descricao: boolean = false;
  semItens: boolean = false;
 
- frm: FormGroup
+ frm: any = FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -170,6 +172,8 @@ export class ListImoveisComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    console.log('Listagem de Imóveis', this.lstValores);
     // Cria o formulário
   this.createForm();
 

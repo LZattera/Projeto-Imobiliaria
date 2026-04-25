@@ -26,7 +26,6 @@
     "@ionic/angular": "^7.0.0",
     "@ng-bootstrap/ng-bootstrap": "^13.1.0",
     "@ng-select/ng-select": "^9.0.2",
-    "@ultima-ui/tree-select": "^0.0.67",
     "angular-datatables": "^14.0.0",
     "bootswatch": "^5.2.2",
     "chart.js": "^2.9.4",
